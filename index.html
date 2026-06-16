@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Fernando van der Vinne | Mechanical Engineering Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 32px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 28px;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    }
+
+    .hero-placeholder {
+      border-radius: 22px;
+      background: linear-gradient(135deg, #d8e5df, #f0eee8);
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 24px;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef1ec;
+      color: var(--accent-dark);
+    }
+
+    .project-link {
+      margin-top: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .focus-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      font-weight: 700;
+    }
+
+    .more-projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .wide-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .wide-card h3 {
+      margin-top: 0;
+    }
+
+    .wide-card p {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 56px 0;
+      }
+
+      .projects,
+      .focus-grid,
+      .more-projects {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="#featured">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="#more">More Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Mechanical Design · Robotics · Prototyping</div>
+
+          <h1>Engineering hardware for real-world automation problems.</h1>
+
+          <p class="lead">
+            I am a mechanical engineer focused on robotics, end-effectors, CAD design,
+            rapid prototyping, and functional testing. My work combines hands-on hardware
+            development with practical engineering constraints.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#featured">View featured projects</a>
+            <a class="button" href="#contact">Contact</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-placeholder">
+            Add a strong picture here later:
+            <br />
+            you + robot / gripper / prototype
+          </div>
+
+          <p class="hero-note">
+            Portfolio currently under development. Project case studies will be added step by step.
+          </p>
+        </aside>
+      </section>
+
+      <section id="featured">
+        <div class="section-title">
+          <h2>Featured projects</h2>
+          <p>
+            Selected projects showing mechanical design, prototyping, testing,
+            and system-level development.
+          </p>
+        </div>
+
+        <div class="projects">
+          <article class="project-card">
+            <div>
+              <h3>Flat-Surface Textile Gripper</h3>
+              <p>
+                Development of gripper concepts for reliably picking deformable textiles
+                from flat surfaces.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
+
+            <div class="project-link">Case study coming soon →</div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <h3>Industrial Laundry Sorting Prototype</h3>
+              <p>
+                Mechanical development for a robotic system intended to automate
+                textile sorting in an industrial environment.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Industrial Testing</span>
+              </div>
+            </div>
+
+            <div class="project-link">Case study coming soon →</div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <h3>Modular Robotic Test Platform</h3>
+              <p>
+                Aluminum-profile structure and surrounding components for a modular
+                robotic test and development setup.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Aluminum Profiles</span>
+                <span class="tag">Inventor</span>
+                <span class="tag">Assembly Design</span>
+              </div>
+            </div>
+
+            <div class="project-link">Case study coming soon →</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="focus">
+        <div class="section-title">
+          <h2>Engineering focus</h2>
+          <p>
+            Areas that appear repeatedly in my work and projects.
+          </p>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-item">Mechanical Design</div>
+          <div class="focus-item">Robotic End-Effectors</div>
+          <div class="focus-item">Rapid Prototyping</div>
+          <div class="focus-item">Functional Testing</div>
+          <div class="focus-item">CAD Assemblies</div>
+          <div class="focus-item">3D Printing</div>
+          <div class="focus-item">Silicone Casting</div>
+          <div class="focus-item">Product Development</div>
+        </div>
+      </section>
+
+      <section id="more">
+        <div class="section-title">
+          <h2>More projects</h2>
+          <p>
+            Additional university, personal, and side projects will be collected here.
+          </p>
+        </div>
+
+        <div class="more-projects">
+          <div class="wide-card">
+            <h3>Selected projects</h3>
+            <p>
+              Secondary projects such as robotic leg modules, wearable robotics concepts,
+              mechatronics practical work, and bachelor thesis summaries.
+            </p>
+            <div class="project-link">Page coming soon →</div>
+          </div>
+
+          <div class="wide-card">
+            <h3>Project archive</h3>
+            <p>
+              Smaller CAD, gearbox, machine elements, university, and personal design projects
+              bundled into a compact overview.
+            </p>
+            <div class="project-link">Page coming soon →</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+      <br />
+      Email / LinkedIn / CV links will be added here.
+    </div>
+  </footer>
+</body>
+</html>

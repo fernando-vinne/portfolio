@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Flat-Surface Textile Gripper | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .project-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .process {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process-step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--text);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .process-step p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    figcaption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-video {
+      width: 100%;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .project-hero,
+      .section-title,
+      .two-column,
+      .gallery,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        height: 360px;
+      }
+
+      figure img {
+        height: 260px;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#featured">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <div class="eyebrow">Robotics · End-Effectors · Textile Handling</div>
+
+          <h1>Flat-Surface Textile Gripper</h1>
+
+          <p class="lead">
+            Development of a robotic gripper concept for picking deformable textiles from flat surfaces.
+            The project focused on turning a broad handling problem into a functional mechanical concept
+            through rapid prototyping, silicone casting, friction-based gripping, spring-assisted contact
+            pressure, and iterative testing.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#process">View process</a>
+            <a class="button" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
+              Public Sewts post →
+            </a>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Context</span>
+              <strong>Industrial robotics project</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Textile gripping from flat surfaces</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Role</span>
+              <strong>Mechanical development & testing</strong>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="hero-image"
+          src="../assets/images/flat-surface-gripper/overview.jpg"
+          alt="Flat-surface textile gripper overview"
+        >
+      </section>
+
+      <section id="overview">
+        <div class="section-title">
+          <h2>Overview</h2>
+
+          <div class="section-body">
+            <p>
+              The goal of this project was to develop a gripper that could reliably pick textile pieces
+              from flat surfaces. This is difficult because textiles are deformable, irregular, and often
+              hard to separate from the surface, especially when the available gripping point is close to
+              an edge or corner.
+            </p>
+
+            <p>
+              The final concept combines a silicone-based flat-surface gripper with a spring-assisted
+              mechanism. The silicone part increases friction and adapts to the textile surface, while the
+              spring mechanism helps generate contact pressure after closing so the textile does not slip
+              or fall during handling.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contribution">
+        <div class="section-title">
+          <h2>My contribution</h2>
+
+          <div class="content-card">
+            <p>
+              I led the mechanical development and iteration of the gripper concept. Some ideas were
+              developed collaboratively, but I was responsible for translating the concepts into physical
+              prototypes, testing them, understanding the failure modes, improving the design, and pushing
+              the concept toward a product-ready implementation.
+            </p>
+
+            <ul class="bullet-list">
+              <li>Tested existing and early-stage solutions to understand the real gripping problem.</li>
+              <li>Developed and evaluated different mechanical concepts for flat-surface textile pickup.</li>
+              <li>Designed and iterated prototypes using CAD, 3D printing, silicone casting, and assembly testing.</li>
+              <li>Improved the gripper and spring mechanism to increase friction and contact pressure after closing.</li>
+              <li>Adapted the concept for integration into larger robotic laundry-sorting prototypes.</li>
+              <li>Worked on the transition from functional prototype to a more robust, manufacturable final design.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <div class="section-title">
+          <h2>Engineering challenges</h2>
+
+          <div class="two-column">
+            <div class="content-card">
+              <h3>Gripping reliability</h3>
+              <ul class="bullet-list">
+                <li>The initial problem was very broad: reliably picking textiles from flat surfaces.</li>
+                <li>Textiles behave inconsistently due to folds, wrinkles, thickness differences, and edge conditions.</li>
+                <li>The gripper had to generate enough friction after closing so the textile would not slip or fall.</li>
+                <li>Difficult grip cases, such as textile corners and edges, had to be handled reliably.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>Product-oriented design</h3>
+              <ul class="bullet-list">
+                <li>The mechanism had to become more than a working prototype: it needed to be robust and repeatable.</li>
+                <li>The silicone mold process had to be improved to avoid imperfections, bubbles, and inconsistent parts.</li>
+                <li>Small manufacturing details had a large effect on the quality and repeatability of the silicone gripper.</li>
+                <li>The final design moved toward an overmolded silicone concept for better durability and product integration.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="section-title">
+          <h2>Design process</h2>
+
+          <div class="process">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong>Gather requirements</strong>
+                <p>
+                  Defined what the gripper needed to achieve in the real application: picking textile pieces
+                  from flat surfaces, holding them securely, and fitting into a robotic handling process.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Understand the problem</strong>
+                <p>
+                  Tested current solutions and observed where they failed, especially with low-friction contact,
+                  textile edges, corners, and inconsistent folds.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Develop and test concepts</strong>
+                <p>
+                  Built and evaluated several gripper concepts to understand which mechanical principles could
+                  create enough contact, friction, and pressure for reliable pickup.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong>Iterate the mechanism</strong>
+                <p>
+                  Refined the silicone gripper geometry and spring-assisted mechanism based on test results,
+                  focusing on reliability, simplicity, and integration into the larger robotic system.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">5</div>
+              <div>
+                <strong>Adapt for manufacturing and final product use</strong>
+                <p>
+                  Improved the mold design and silicone casting process, then moved toward an overmolded silicone
+                  concept for the final design to increase durability and production readiness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="media">
+        <div class="section-title">
+          <h2>Prototype development</h2>
+
+          <div class="gallery">
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/early-prototype-01.jpg"
+                alt="Early flat-surface textile gripper prototype"
+              >
+              <figcaption>
+                Early prototype used to test basic textile contact, friction, and pickup behavior.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/early-prototype-02.jpg"
+                alt="Second early flat-surface textile gripper prototype"
+              >
+              <figcaption>
+                Prototype iteration used to better understand how the textile reacted during closing and lifting.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/spring-mechanism.jpg"
+                alt="Spring-assisted mechanism for textile gripping"
+              >
+              <figcaption>
+                Spring-assisted mechanism used to increase contact pressure and help prevent the textile from slipping after closing.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/overmold-concept.jpg"
+                alt="Overmolded silicone concept for final textile gripper design"
+              >
+              <figcaption>
+                Final design direction using an overmolded silicone concept for improved durability and product-oriented implementation.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="video">
+        <div class="section-title">
+          <h2>Functional testing</h2>
+
+          <div>
+            <video class="project-video" controls muted loop playsinline>
+              <source src="../assets/videos/corner-grip-test.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <p class="section-body" style="margin-top: 18px;">
+              Example test showing a difficult grip case close to the textile corner. These edge and corner
+              cases were especially useful for evaluating whether the gripper created enough friction and
+              pressure to hold the textile after closing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="result">
+        <div class="section-title">
+          <h2>Result</h2>
+
+          <div class="highlight">
+            <p>
+              The resulting gripper concept was used in two deployed robotic prototype systems. A newer version
+              was later developed for the upcoming final product deployment, using an overmolded silicone concept
+              to improve robustness, durability, and manufacturability.
+            </p>
+
+            <p>
+              The project was especially valuable because it transformed a broad and undefined handling problem
+              into a concrete mechanical product concept through testing, iteration, and adaptation to real-world
+              manufacturing and deployment constraints.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="deployment">
+        <div class="section-title">
+          <h2>Integration</h2>
+
+          <div class="gallery">
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/deployed-prototype.jpg"
+                alt="Flat-surface textile gripper integrated into a robotic prototype"
+              >
+              <figcaption>
+                Integration of the gripper concept into a larger robotic laundry-sorting prototype.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/flat-surface-gripper/current-design.jpg"
+                alt="Current flat-surface textile gripper design"
+              >
+              <figcaption>
+                Later design iteration developed for product-oriented deployment.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <a class="button primary" href="../index.html#featured">Back to featured projects</a>
+          <a class="button" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
+            View public Sewts post →
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

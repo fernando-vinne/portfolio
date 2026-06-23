@@ -1,1 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Compact Parallel Gripper End-Effector | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .project-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: #2f3742;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .process {
+      display: grid;
+      gap: 14px;
+    }
+
+    .process-step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--text);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .process-step p {
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      background: #f0f0ec;
+    }
+
+    figcaption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project-video {
+      width: 100%;
+      max-height: 620px;
+      object-fit: contain;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: #000;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .project-hero,
+      .section-title,
+      .two-column,
+      .gallery,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#featured">Projects</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <div class="eyebrow">Mechatronics · End-Effectors · Compact Design</div>
+
+          <h1>Compact Parallel Gripper End-Effector</h1>
+
+          <p class="lead">
+            Development of a compact mechatronic parallel gripper for robotic testing applications.
+            The project focused on achieving a required opening range within a limited end-effector
+            volume while integrating the mechanism, bearings, fittings, electronics, wiring, and
+            mounting interface into one compact assembly.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#process">View process</a>
+            <a class="button" href="#video">View test video</a>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Context</span>
+              <strong>In-house robotic testing</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Compact mechatronic integration</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Role</span>
+              <strong>Mechanical design, integration & testing</strong>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="hero-image"
+          src="../assets/images/compact-parallel-gripper/final-cad.png"
+          alt="CAD design of compact parallel gripper end-effector"
+        >
+      </section>
+
+      <section id="overview">
+        <div class="section-title">
+          <h2>Overview</h2>
+
+          <div class="section-body">
+            <p>
+              This project involved the development of a small parallel gripper end-effector for robotic
+              testing. The required opening distance was defined by the application, but the available
+              volume for the complete mechanism was very limited.
+            </p>
+
+            <p>
+              The main challenge was to design a compact mechanism that could achieve the required stroke
+              while also fitting the actuator, guide elements, bearings, electronics, wiring, fittings, and
+              mounting interface into one usable end-effector package.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contribution">
+        <div class="section-title">
+          <h2>My contribution</h2>
+
+          <div class="content-card">
+            <p>
+              I was responsible for the mechanical development and integration of the gripper. The work included
+              mechanism layout, CAD design, fitting and bearing selection, electronics packaging, assembly, testing,
+              and iteration until the end-effector worked as a compact mechatronic unit.
+            </p>
+
+            <ul class="bullet-list">
+              <li>Designed the compact parallel gripper mechanism around the required opening range.</li>
+              <li>Selected and integrated bearings, guide rods, fittings, and mechanical interfaces.</li>
+              <li>Integrated electronics and wiring into the limited available end-effector volume.</li>
+              <li>Designed the housing and mounting interface for robotic testing.</li>
+              <li>Assembled, tested, and iterated the gripper based on practical integration constraints.</li>
+              <li>Deployed the gripper in in-house robotic testing setups.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <div class="section-title">
+          <h2>Engineering challenges</h2>
+
+          <div class="two-column">
+            <div class="content-card">
+              <h3>Compact mechanism design</h3>
+              <ul class="bullet-list">
+                <li>The gripper needed to achieve a defined opening stroke within a very small package.</li>
+                <li>The mechanism had to remain stiff and guided despite the limited available space.</li>
+                <li>Bearings, guide rods, fasteners, and moving components had to be arranged without collisions.</li>
+                <li>The design needed to be printable, assembled, and serviced without unnecessary complexity.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>Mechatronic integration</h3>
+              <ul class="bullet-list">
+                <li>The electronics had to fit inside the same compact volume as the mechanical system.</li>
+                <li>Wiring, connectors, and fittings had to be routed without interfering with moving parts.</li>
+                <li>The end-effector needed to mount cleanly to a robot while keeping the gripper accessible.</li>
+                <li>The final assembly had to work as a complete mechatronic unit, not only as a mechanical concept.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="section-title">
+          <h2>Design process</h2>
+
+          <div class="process">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <div>
+                <strong>Define the required motion</strong>
+                <p>
+                  The required opening range was fixed by the application. This defined the mechanism target
+                  and created the central packaging challenge for the design.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Develop the compact mechanism</strong>
+                <p>
+                  Designed the moving finger layout, guide elements, bearing arrangement, and actuation concept
+                  to achieve the required parallel motion inside the available space.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Integrate electronics and fittings</strong>
+                <p>
+                  Packaged the electronics, wiring, connectors, fittings, and routing paths around the mechanical
+                  system while avoiding interference with moving components.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">4</div>
+              <div>
+                <strong>Design housing and robot interface</strong>
+                <p>
+                  Developed the outer housing and mounting interface so the gripper could be installed on a robot
+                  and used as a practical in-house testing end-effector.
+                </p>
+              </div>
+            </div>
+
+            <div class="process-step">
+              <div class="step-number">5</div>
+              <div>
+                <strong>Assemble, test, and iterate</strong>
+                <p>
+                  Built and tested the gripper, then iterated details such as clearances, assembly access,
+                  cable routing, and component placement to improve reliability and usability.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="media">
+        <div class="section-title">
+          <h2>Design and integration</h2>
+
+          <div class="gallery">
+            <figure>
+              <img
+                src="../assets/images/compact-parallel-gripper/final-cad.png"
+                alt="Final CAD design of compact parallel gripper"
+              >
+              <figcaption>
+                Final CAD design showing the compact housing, robot-side mounting interface, and parallel gripping fingers.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/compact-parallel-gripper/mechanics-electronics-cad.png"
+                alt="CAD view showing mechanics and electronics integration of compact parallel gripper"
+              >
+              <figcaption>
+                Internal CAD view showing the integration of mechanics, electronics, guide rods, bearings, fittings, and wiring.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/compact-parallel-gripper/deployed-on-ur5.jpg"
+                alt="Compact parallel gripper mounted on UR5 robot"
+              >
+              <figcaption>
+                Assembled gripper mounted on a robot for in-house testing and validation.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="video">
+        <div class="section-title">
+          <h2>Functional testing</h2>
+
+          <div>
+            <video class="project-video" controls muted loop playsinline>
+              <source src="../assets/videos/parallel-gripper-test.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+
+            <p class="section-body" style="margin-top: 18px;">
+              Functional test of the compact parallel gripper. The test was used to validate the opening motion,
+              mechanical clearances, actuation behavior, and integration of the end-effector as a complete
+              mechatronic assembly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="result">
+        <div class="section-title">
+          <h2>Result</h2>
+
+          <div class="highlight">
+            <p>
+              The result was a compact parallel gripper end-effector that combined mechanism design,
+              electronics packaging, fittings, wiring, and robot mounting into one functional mechatronic unit.
+              The gripper was used in in-house robotic testing and provided practical experience in compact
+              end-effector integration.
+            </p>
+
+            <p>
+              This project was especially valuable because it required solving mechanical packaging and
+              mechatronic integration together, rather than treating electronics, actuation, and mechanical
+              design as separate tasks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="navigation">
+        <div class="buttons">
+          <a class="button primary" href="../index.html#featured">Back to featured projects</a>
+          <a class="button" href="../index.html">Back to home</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

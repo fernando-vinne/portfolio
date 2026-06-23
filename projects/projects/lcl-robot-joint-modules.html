@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lightweight Low-Cost Robot Joint Modules | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .project-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-image-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+    }
+
+    .image-credit {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 12px 4px 0;
+    }
+
+    .image-credit a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.42fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .project-hero,
+      .section-title,
+      .two-column,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../selected-projects.html">Selected Projects</a>
+        <a href="../project-archive.html">Archive</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <div class="eyebrow">Robotics · Lightweight Design · Research Prototype</div>
+
+          <h1>Lightweight Low-Cost Robot Joint Modules</h1>
+
+          <p class="lead">
+            Prototype construction and mechanical interface design for a research project focused on
+            low-cost, customizable, and rigid lightweight robotic systems. The work supported the study
+            of topology-optimized linkages by making the motor modules, linkage interfaces, assembly
+            spaces, and practical construction constraints usable in a physical robot prototype.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#contribution">View contribution</a>
+            <a class="button" href="https://www.mdpi.com/2218-6581/12/4/91" target="_blank" rel="noopener noreferrer">
+              View publication →
+            </a>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Context</span>
+              <strong>Research prototype</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Robot joint modules & interfaces</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Role</span>
+              <strong>Motor modules, linkage connections & construction</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-card">
+          <img
+            class="hero-image"
+            src="../assets/images/selected-projects/lcl-robot-joints.jpg"
+            alt="Lightweight low-cost robot prototypes from related publication"
+          >
+
+          <p class="image-credit">
+            Image source: related MDPI publication on the low-cost robot project.
+            <a href="https://www.mdpi.com/2218-6581/12/4/91" target="_blank" rel="noopener noreferrer">
+              View source →
+            </a>
+          </p>
+        </div>
+      </section>
+
+      <section id="overview">
+        <div class="section-title">
+          <h2>Overview</h2>
+
+          <div class="section-body">
+            <p>
+              This project was part of a research effort to develop a process for the semi-automatic design
+              of low-cost lightweight robots. The linkages were designed using topology optimization, while
+              the overall robot concept aimed to combine advances in AI-assisted design, 3D printing,
+              lightweight robot concepts, and modular actuation.
+            </p>
+
+            <p>
+              The work was connected to a joint development context between LPL and the Institute of
+              Micro Technology and Medical Device Technology. The goal was to make low-cost robotic systems
+              more customizable, lightweight, rigid, and suitable for broader use.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contribution">
+        <div class="section-title">
+          <h2>My contribution</h2>
+
+          <div class="content-card">
+            <p>
+              My role was to design the motor modules and linkage connections so the lightweight robot
+              concept could be physically assembled and studied. A key part of this work was defining
+              practical interface constraints for the topology-optimized linkages.
+            </p>
+
+            <ul class="bullet-list">
+              <li>Designed motor modules for the modular lightweight robot concept.</li>
+              <li>Designed linkage connection interfaces for topology-optimized robot links.</li>
+              <li>Helped define which areas had to remain free for assembly, tools, cables, and access.</li>
+              <li>Supported the physical construction of the robot prototype.</li>
+              <li>Contributed to a research project later connected to a publication acknowledgement.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <div class="section-title">
+          <h2>Engineering challenges</h2>
+
+          <div class="two-column">
+            <div class="content-card">
+              <h3>Lightweight interfaces</h3>
+              <ul class="bullet-list">
+                <li>The modules had strong weight constraints while still needing to transfer loads reliably.</li>
+                <li>The interfaces had to support topology-optimized linkages without blocking assembly access.</li>
+                <li>Connection points had to be practical for real construction, not only theoretical optimization.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>Modular construction</h3>
+              <ul class="bullet-list">
+                <li>The robot joints needed to remain modular and understandable for assembly and testing.</li>
+                <li>Tools, cables, fasteners, and print limitations had to be considered during interface design.</li>
+                <li>The design had to translate research concepts into a physical prototype that could actually be built.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="learning">
+        <div class="section-title">
+          <h2>What I learned</h2>
+
+          <div class="highlight">
+            <p>
+              This was one of my first deeper experiences with robotic joints, modular robot design,
+              SLA-printed parts, and end-effector/module construction. It also showed me how important
+              interfaces are when optimized parts need to become real assemblies.
+            </p>
+
+            <p>
+              The project was especially valuable because it connected mechanical design, lightweight
+              structures, robotic modules, and practical prototype construction in a research context.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="navigation">
+        <div class="buttons">
+          <a class="button primary" href="../selected-projects.html">Back to selected projects</a>
+          <a class="button" href="../index.html">Back to home</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

@@ -288,6 +288,16 @@
       padding: 24px;
     }
 
+    .wide-card {
+  display: block;
+  transition: 0.2s ease;
+}
+
+.wide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+}
+
     .wide-card h3 {
       margin-top: 0;
     }
@@ -329,11 +339,12 @@
       <a class="logo" href="#">Fernando van der Vinne</a>
 
       <nav class="nav-links">
-        <a href="#featured">Projects</a>
-        <a href="#focus">Focus</a>
-        <a href="#more">More Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <a href="#featured">Featured</a>
+  <a href="selected-projects.html">Selected Projects</a>
+  <a href="project-archive.html">Archive</a>
+  <a href="#focus">Focus</a>
+  <a href="#contact">Contact</a>
+</nav>
     </div>
   </header>
 
@@ -360,9 +371,10 @@
         <aside class="hero-card">
           <img class="hero-image" src="assets/images/robot selfie.png" alt="Fernando working with robotic hardware">
 
-          <p class="hero-note">
-            Portfolio currently under development. Project case studies will be added step by step.
-          </p>
+         <p class="hero-note">
+  Selected engineering case studies focused on robotic hardware, mechanical design,
+  prototyping, and real-world automation.
+</p>
         </aside>
       </section>
 
@@ -370,9 +382,9 @@
   <div class="section-title">
     <h2>Featured projects</h2>
     <p>
-      Selected projects showing mechanical design, prototyping, testing,
-      mechatronic integration, and system-level development.
-    </p>
+  Selected projects showing mechanical design, prototyping, testing,
+  mechatronic integration, and system-level development.
+</p>
   </div>
 
   <div class="projects">
@@ -472,34 +484,36 @@
         </div>
       </section>
 
-      <section id="more">
-        <div class="section-title">
-          <h2>More projects</h2>
-          <p>
-            Additional university, personal, and side projects will be collected here.
-          </p>
-        </div>
+<section id="more">
+  <div class="section-title">
+    <h2>More projects</h2>
+    <p>
+      Additional academic, personal, and professional projects are organized by depth:
+      selected projects have short case studies, while smaller projects are collected in a compact archive.
+    </p>
+  </div>
 
-        <div class="more-projects">
-          <div class="wide-card">
-            <h3>Selected projects</h3>
-            <p>
-              Secondary projects such as robotic leg modules, wearable robotics concepts,
-              mechatronics practical work, and bachelor thesis summaries.
-            </p>
-            <div class="project-link">Page coming soon →</div>
-          </div>
+  <div class="more-projects">
+    <a class="wide-card" href="selected-projects.html">
+      <h3>Selected projects</h3>
+      <p>
+        Shorter case studies covering robotic modules, academic development projects,
+        mechatronics, PCB work, and additional mechanical design projects.
+      </p>
+      <div class="project-link">View selected projects →</div>
+    </a>
 
-          <div class="wide-card">
-            <h3>Project archive</h3>
-            <p>
-              Smaller CAD, gearbox, machine elements, university, and personal design projects
-              bundled into a compact overview.
-            </p>
-            <div class="project-link">Page coming soon →</div>
-          </div>
-        </div>
-      </section>
+    <a class="wide-card" href="project-archive.html">
+      <h3>Project archive</h3>
+      <p>
+        A compact overview of smaller CAD, gearbox, machine elements, university,
+        and personal design projects.
+      </p>
+      <div class="project-link">View project archive →</div>
+    </a>
+  </div>
+</section>
+      
     </div>
   </main>
 

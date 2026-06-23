@@ -34,6 +34,22 @@
       text-decoration: none;
     }
 
+    .project-image {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  background: #f0f0ec;
+}
+
+    .project-image.contain {
+  object-fit: contain;
+  background: #2f3742;
+}
+
     .container {
       width: min(1100px, 92%);
       margin: 0 auto;
@@ -346,72 +362,91 @@
         </aside>
       </section>
 
-      <section id="featured">
-        <div class="section-title">
-          <h2>Featured projects</h2>
-          <p>
-            Selected projects showing mechanical design, prototyping, testing,
-            and system-level development.
-          </p>
+    <section id="featured">
+  <div class="section-title">
+    <h2>Featured projects</h2>
+    <p>
+      Selected projects showing mechanical design, prototyping, testing,
+      mechatronic integration, and system-level development.
+    </p>
+  </div>
+
+  <div class="projects">
+    <article class="project-card">
+      <div>
+        <img
+          class="project-image"
+          src="assets/images/flat-surface-gripper/overview.jpg"
+          alt="Flat-surface textile gripper"
+        >
+
+        <h3>Flat-Surface Textile Gripper</h3>
+        <p>
+          Development of gripper concepts for reliably picking deformable textiles
+          from flat surfaces.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Robotics</span>
+          <span class="tag">CAD</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Testing</span>
         </div>
+      </div>
 
-        <div class="projects">
-          <article class="project-card">
-            <div>
-              <h3>Flat-Surface Textile Gripper</h3>
-              <p>
-                Development of gripper concepts for reliably picking deformable textiles
-                from flat surfaces.
-              </p>
+      <a class="project-link" href="projects/flat-surface-textile-gripper.html">View case study →</a>
+    </article>
 
-              <div class="tags">
-                <span class="tag">Robotics</span>
-                <span class="tag">CAD</span>
-                <span class="tag">Prototyping</span>
-                <span class="tag">Testing</span>
-              </div>
-            </div>
+    <article class="project-card">
+      <div>
+        <img
+          class="project-image contain"
+          src="assets/images/industrial-laundry-sorting/hero-cad.png"
+          alt="CAD design of industrial laundry sorting prototype"
+        >
 
-            <a class="project-link" href="projects/flat-surface-textile-gripper.html">View case study →</a>
-          </article>
+        <h3>Industrial Laundry Sorting Prototype</h3>
+        <p>
+          Mechanical development for a robotic system intended to automate
+          textile sorting in an industrial environment.
+        </p>
 
-          <article class="project-card">
-            <div>
-              <h3>Industrial Laundry Sorting Prototype</h3>
-              <p>
-                Mechanical development for a robotic system intended to automate
-                textile sorting in an industrial environment.
-              </p>
-
-              <div class="tags">
-                <span class="tag">Mechanical Design</span>
-                <span class="tag">Automation</span>
-                <span class="tag">Industrial Testing</span>
-              </div>
-            </div>
-
-            <a class="project-link" href="projects/industrial-laundry-sorting-prototype.html">View case study →</a>
-          </article>
-
-          <article class="project-card">
-            <div>
-             <h3>Compact Parallel Gripper End-Effector</h3>
-              <p>
-            Compact mechatronic end-effector integrating mechanism design, electronics,
-            fittings, wiring, and robotic mounting into one small assembly.
-              </p>
-
-              <div class="tags">
-  <span class="tag">Mechatronics</span>
-  <span class="tag">End-Effectors</span>
-  <span class="tag">Compact Design</span>
-  <span class="tag">Testing</span>
-</div>
-
-            <a class="project-link" href="projects/compact-parallel-gripper-end-effector.html">View case study →</a>
-          </article>
+        <div class="tags">
+          <span class="tag">Mechanical Design</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Industrial Testing</span>
         </div>
-      </section>
+      </div>
+
+      <a class="project-link" href="projects/industrial-laundry-sorting-prototype.html">View case study →</a>
+    </article>
+
+    <article class="project-card">
+      <div>
+        <img
+          class="project-image contain"
+          src="assets/images/compact-parallel-gripper/final-cad.png"
+          alt="CAD design of compact parallel gripper end-effector"
+        >
+
+        <h3>Compact Parallel Gripper End-Effector</h3>
+        <p>
+          Compact mechatronic end-effector integrating mechanism design, electronics,
+          fittings, wiring, and robotic mounting into one small assembly.
+        </p>
+
+        <div class="tags">
+          <span class="tag">Mechatronics</span>
+          <span class="tag">End-Effectors</span>
+          <span class="tag">Compact Design</span>
+          <span class="tag">Testing</span>
+        </div>
+      </div>
+
+      <a class="project-link" href="projects/compact-parallel-gripper-end-effector.html">View case study →</a>
+    </article>
+  </div>
+</section>
 
       <section id="focus">
         <div class="section-title">

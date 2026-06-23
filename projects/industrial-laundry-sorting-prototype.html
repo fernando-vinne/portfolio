@@ -114,6 +114,13 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
     }
 
+      .hero-image.hero-contain {
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      background: #2f3742;
+    }
+
     .meta-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -244,11 +251,13 @@
     }
 
     figure img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      object-position: center;
-    }
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  object-position: center;
+  background: #f0f0ec;
+}
 
     figcaption {
       padding: 16px 18px;
@@ -372,8 +381,8 @@
 
         <img
           class="hero-image"
-          src="../assets/images/industrial-laundry-sorting/hero.jpg"
-          alt="Industrial laundry sorting robotic prototype"
+          src="../assets/images/industrial-laundry-sorting/hero-cad.png"
+          alt="CAD design of the aluminum-profile frame for the industrial laundry sorting prototype"
         >
       </section>
 
@@ -514,52 +523,62 @@
       </section>
 
       <section id="media">
-        <div class="section-title">
-          <h2>Prototype development</h2>
+  <div class="section-title">
+    <h2>Prototype development</h2>
 
-          <div class="gallery">
-            <figure>
-              <img
-                src="../assets/images/industrial-laundry-sorting/prototype-installed.jpg"
-                alt="First installed industrial laundry sorting prototype"
-              >
-              <figcaption>
-                Installed prototype used to validate the robotic sorting concept in a real industrial environment.
-              </figcaption>
-            </figure>
+    <div class="gallery">
+      <figure>
+        <img
+          src="../assets/images/industrial-laundry-sorting/hero-cad.png"
+          alt="CAD design of aluminum-profile frame for industrial laundry sorting prototype"
+        >
+        <figcaption>
+          CAD design of the aluminum-profile frame, enclosure elements, and surrounding mechanical structure.
+        </figcaption>
+      </figure>
 
-            <figure>
-              <img
-                src="../assets/images/industrial-laundry-sorting/aluminum-frame-cad.jpg"
-                alt="CAD design of aluminum-profile frame for industrial laundry sorting prototype"
-              >
-              <figcaption>
-                CAD design of the aluminum-profile frame and surrounding mechanical structure.
-              </figcaption>
-            </figure>
+      <figure>
+        <img
+          src="../assets/images/industrial-laundry-sorting/transport-preparation.jpg"
+          alt="Prototype prepared for transport and installation"
+        >
+        <figcaption>
+          Prototype prepared for transport and installation, showing practical deployment constraints beyond the CAD design.
+        </figcaption>
+      </figure>
 
-            <figure>
-              <img
-                src="../assets/images/industrial-laundry-sorting/enclosure-design.jpg"
-                alt="Enclosure and access design for robotic laundry sorting prototype"
-              >
-              <figcaption>
-                Enclosure, door, and access-related mechanical design for installation and validation.
-              </figcaption>
-            </figure>
+      <figure>
+        <img
+          src="../assets/images/industrial-laundry-sorting/deployed-installation.jpg"
+          alt="Installed industrial laundry sorting prototype during on-site validation"
+        >
+        <figcaption>
+          Installed prototype during on-site validation in an industrial laundry environment.
+        </figcaption>
+      </figure>
 
-            <figure>
-              <img
-                src="../assets/images/industrial-laundry-sorting/system-integration.jpg"
-                alt="Mechanical system integration of robotic laundry sorting prototype"
-              >
-              <figcaption>
-                Mechanical integration of robot, gripper, pneumatic components, and surrounding structures.
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
+      <figure>
+        <img
+          src="../assets/images/industrial-laundry-sorting/end-effector-integration.jpg"
+          alt="End-effector integration on the robotic laundry sorting prototype"
+        >
+        <figcaption>
+          End-effector integration detail showing the gripper, spring-compliant mechanism, sensor, and pneumatic routing.
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="../assets/images/industrial-laundry-sorting/installation-side-view.jpg"
+          alt="Side view of installed robotic laundry sorting prototype"
+        >
+        <figcaption>
+          Side view of the installed system, showing how the robot, frame, and surrounding structure fit into the existing industrial environment.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
       <section id="result">
         <div class="section-title">

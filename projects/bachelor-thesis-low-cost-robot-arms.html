@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bachelor Thesis: End-Effectors for Low-Cost Robot Arms | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .project-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.42fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      background: #f0f0ec;
+    }
+
+    figcaption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .project-hero,
+      .section-title,
+      .two-column,
+      .gallery,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../selected-projects.html">Selected Projects</a>
+        <a href="../project-archive.html">Archive</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <div class="eyebrow">Bachelor Thesis · Robotics · Product Development</div>
+
+          <h1>End-Effectors for Low-Cost Robot Arms</h1>
+
+          <p class="lead">
+            Bachelor thesis focused on the development of modules and end-effectors for a
+            modular low-cost robot arm platform. The project combined requirements analysis,
+            CAD-based mechanical design, modular interfaces, switching concepts, end-effector
+            development, and evaluation of functionality, assembly, and manufacturability.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#contribution">View contribution</a>
+            <a class="button" href="#design-highlights">Design highlights</a>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Context</span>
+              <strong>Bachelor thesis at TUM</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Modular robot modules & end-effectors</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Role</span>
+              <strong>Mechanical design, concepts & evaluation</strong>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="hero-image"
+          src="../assets/images/bachelor-thesis/robot-arm-hero.jpg"
+          alt="Low-cost robot arm developed during bachelor thesis"
+        >
+      </section>
+
+      <section id="overview">
+        <div class="section-title">
+          <h2>Overview</h2>
+
+          <div class="section-body">
+            <p>
+              This bachelor thesis focused on improving and expanding a modular low-cost robot arm.
+              The work included the development of active modules, a base module, passive modules,
+              switch mechanisms, and different end-effector concepts. A central goal was to make the
+              system more modular, easier to assemble, and more practical to use.
+            </p>
+
+            <p>
+              The project also investigated how the robot could be adapted for laboratory-style handling
+              tasks. This required analyzing possible use cases, defining requirements, developing
+              mechanical concepts, and evaluating how individual modules could work together as part
+              of one coherent robotic platform.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contribution">
+        <div class="section-title">
+          <h2>My contribution</h2>
+
+          <div class="content-card">
+            <p>
+              I worked across the development process, from understanding the limitations of previous
+              robot versions to developing new mechanical concepts and evaluating the resulting modules.
+              The work combined product-development thinking with practical CAD design and prototyping.
+            </p>
+
+            <ul class="bullet-list">
+              <li>Evaluated previous robot versions and gathered requirements for the redesign.</li>
+              <li>Developed modular robot components and interfaces for improved assembly and interchangeability.</li>
+              <li>Designed end-effector concepts for application-oriented handling tasks.</li>
+              <li>Worked on switch mechanism concepts for interchangeable tooling.</li>
+              <li>Considered mechanical stability, bearing selection, load transfer, cable routing, and accessibility.</li>
+              <li>Evaluated concepts regarding functionality, assembly, modularity, and manufacturing cost.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <div class="section-title">
+          <h2>Engineering challenges</h2>
+
+          <div class="two-column">
+            <div class="content-card">
+              <h3>Modularity and interfaces</h3>
+              <ul class="bullet-list">
+                <li>The robot needed standardized interfaces so modules and end-effectors could be exchanged more easily.</li>
+                <li>Connections had to support mechanical loads while still allowing practical assembly and disassembly.</li>
+                <li>Cable routing and access to screws had to be considered as part of the interface design.</li>
+                <li>The design needed to remain cost-conscious and manufacturable for a low-cost robot platform.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>End-effectors and switching</h3>
+              <ul class="bullet-list">
+                <li>Different handling tasks required different end-effector concepts.</li>
+                <li>The switch mechanism had to support interchangeable tooling in a compact and reliable way.</li>
+                <li>The end-effectors needed to be mechanically compatible with the robot architecture.</li>
+                <li>The concepts had to balance functionality, simplicity, assembly, and manufacturability.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="design-highlights">
+        <div class="section-title">
+          <h2>Design highlights</h2>
+
+          <div class="gallery">
+            <figure>
+              <img
+                src="../assets/images/bachelor-thesis/robot-arm-cad.png"
+                alt="CAD render of modular low-cost robot arm"
+              >
+              <figcaption>
+                CAD view of the modular robot arm, including the robot structure, switching interface, and end-effector integration.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/bachelor-thesis/end-effector-concepts.jpg"
+                alt="CAD collage of end-effector and switch mechanism concepts"
+              >
+              <figcaption>
+                Selection of end-effector and switching concepts developed as part of the modular robot platform.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/bachelor-thesis/cap-gripper-test.jpg"
+                alt="End-effector gripping a laboratory container cap"
+              >
+              <figcaption>
+                Functional gripping concept for handling laboratory-style containers and caps.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <img
+                src="../assets/images/bachelor-thesis/robot-arm-with-gripper.jpg"
+                alt="Low-cost robot arm with mounted gripper end-effector"
+              >
+              <figcaption>
+                Robot arm with mounted end-effector, showing how the tooling concepts integrate into the full system.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="learning">
+        <div class="section-title">
+          <h2>What I learned</h2>
+
+          <div class="highlight">
+            <p>
+              This project gave me practical experience in structured product development for robotics.
+              It required moving from requirements and use cases to modular mechanical concepts, CAD design,
+              assembly considerations, and evaluation of different design directions.
+            </p>
+
+            <p>
+              The most valuable learning was how strongly module interfaces influence the usability of a
+              robotic system. Even when individual modules work well, the overall system only becomes practical
+              when assembly, cable routing, accessibility, and interchangeability are considered from the beginning.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="outcome">
+        <div class="section-title">
+          <h2>Outcome</h2>
+
+          <div class="highlight">
+            <p>
+              The thesis resulted in a set of developed robot modules, switching concepts, and end-effector
+              designs for a modular low-cost robot arm platform. The work improved my understanding of
+              robotics hardware, modularity, mechanical interfaces, end-effector design, and cost-conscious
+              product development.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="navigation">
+        <div class="buttons">
+          <a class="button primary" href="../selected-projects.html">Back to selected projects</a>
+          <a class="button" href="../index.html">Back to home</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

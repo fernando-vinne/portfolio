@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Robotic Leg Module and Actuator Test Bench | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .project-hero {
+      padding: 72px 0 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+
+    .meta-card strong {
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 48px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      display: grid;
+      grid-template-columns: 0.42fr 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin-top: 0;
+      letter-spacing: -0.03em;
+    }
+
+    .section-body {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-body p:first-child {
+      margin-top: 0;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .bullet-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      background: #f0f0ec;
+    }
+
+    figcaption {
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .highlight {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      font-size: 1.05rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .button.primary {
+      background: var(--text);
+      color: white;
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .project-hero,
+      .section-title,
+      .two-column,
+      .gallery,
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="../index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../selected-projects.html">Selected Projects</a>
+        <a href="../project-archive.html">Archive</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <div class="eyebrow">Robotics · Mechanical Design · Test Bench</div>
+
+          <h1>Robotic Leg Module and Actuator Test Bench</h1>
+
+          <p class="lead">
+            Mechanical design of a robotic leg module and test setup. The work focused on
+            actuator mounting, carbon rod integration, secure fixation, cabling considerations,
+            and a connection concept that allowed actuators to be changed easily during testing.
+          </p>
+
+          <div class="buttons">
+            <a class="button primary" href="#contribution">View contribution</a>
+            <a class="button" href="#connector">Carbon rod connector</a>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-card">
+              <span>Context</span>
+              <strong>Robotic module prototype</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Focus</span>
+              <strong>Leg mechanics & actuator testing</strong>
+            </div>
+
+            <div class="meta-card">
+              <span>Role</span>
+              <strong>Mechanical design & test bench</strong>
+            </div>
+          </div>
+        </div>
+
+        <img
+          class="hero-image"
+          src="../assets/images/robotic-leg-module/leg-standing.jpg"
+          alt="Robotic leg module mounted on a test bench"
+        >
+      </section>
+
+      <section id="overview">
+        <div class="section-title">
+          <h2>Overview</h2>
+
+          <div class="section-body">
+            <p>
+              This project involved the mechanical design of a robotic leg module and its test bench.
+              The setup was intended to support testing and actuator changes, so the design had to be
+              practical to assemble, stiff enough for testing, and accessible for modifications.
+            </p>
+
+            <p>
+              Since the project was completed as one of my final tasks in that role, I do not know the
+              later development status of the system. This page therefore focuses on my direct contribution:
+              the mechanical design of the leg, actuator mounting concept, carbon rod connection, cabling
+              considerations, and test bench integration.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contribution">
+        <div class="section-title">
+          <h2>My contribution</h2>
+
+          <div class="content-card">
+            <p>
+              My work focused on the mechanical design of the robotic leg module and its test setup.
+              A key part of the design was making the actuator and carbon rod connection secure while
+              still allowing actuators to be changed during testing.
+            </p>
+
+            <ul class="bullet-list">
+              <li>Designed the mechanical structure of the robotic leg module.</li>
+              <li>Designed the actuator mounting concept and related mechanical interfaces.</li>
+              <li>Worked on secure fixation of the carbon rod without damaging it.</li>
+              <li>Designed the test bench interface for mounting and evaluating the leg module.</li>
+              <li>Considered cabling and assembly access during the mechanical layout.</li>
+              <li>Developed a connection concept that supported actuator changes during testing.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="challenges">
+        <div class="section-title">
+          <h2>Engineering challenges</h2>
+
+          <div class="two-column">
+            <div class="content-card">
+              <h3>Secure carbon rod fixation</h3>
+              <ul class="bullet-list">
+                <li>The carbon rod had to be fixed securely while avoiding damage from excessive clamping force.</li>
+                <li>The connection needed to transfer loads reliably during testing.</li>
+                <li>The design had to allow the actuator-side components to be changed without rebuilding the whole leg.</li>
+              </ul>
+            </div>
+
+            <div class="content-card">
+              <h3>Actuator and test bench integration</h3>
+              <ul class="bullet-list">
+                <li>Actuators needed to be mounted securely and remain accessible for changes.</li>
+                <li>The leg had to interface with a test bench for evaluation.</li>
+                <li>Cabling and assembly access had to be considered early in the layout.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="connector">
+        <div class="section-title">
+          <h2>Carbon rod connector</h2>
+
+          <div class="section-body">
+            <p>
+              One of the most interesting details was the carbon rod connection. The requirement was to
+              make actuator changes easy during testing while still fixing the carbon rod securely. The
+              connector used a special press-fit style design to hold the rod in place without breaking it,
+              while keeping the assembly practical to change and service.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <figure>
+            <img
+              src="../assets/images/robotic-leg-module/leg-standing.jpg"
+              alt="Robotic leg module mounted on test bench"
+            >
+            <figcaption>
+              Robotic leg module mounted on the test bench.
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img
+              src="../assets/images/robotic-leg-module/carbon-rod-connector.png"
+              alt="CAD section view of carbon rod connector"
+            >
+            <figcaption>
+              CAD section of the carbon rod connection concept. The design supported secure fixation while allowing actuator-side components to be changed for testing.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="learning">
+        <div class="section-title">
+          <h2>What I learned</h2>
+
+          <div class="highlight">
+            <p>
+              This project gave me practical experience with carbon rod integration, actuator mounting,
+              press-fit style connection design, cabling considerations, and test bench design for robotic
+              modules.
+            </p>
+
+            <p>
+              The main takeaway was that small interface details can become central to whether a robotic
+              prototype is easy to test, modify, and assemble.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="navigation">
+        <div class="buttons">
+          <a class="button primary" href="../selected-projects.html">Back to selected projects</a>
+          <a class="button" href="../index.html">Back to home</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Projects | Fernando van der Vinne</title>
+
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --text: #1d1d1f;
+      --muted: #666;
+      --card: #ffffff;
+      --line: #deded8;
+      --accent: #2f6f5e;
+      --accent-dark: #1f4e42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 80px 0 54px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+      max-width: 900px;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 28px;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .jump-link {
+      display: inline-block;
+      padding: 10px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--accent-dark);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .jump-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    section {
+      padding: 58px 0;
+      border-top: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0;
+    }
+
+    .category-label {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .selected-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .project-card,
+    .archive-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: 0.2s ease;
+      color: inherit;
+    }
+
+    .project-card {
+      padding: 24px;
+      min-height: 455px;
+    }
+
+    .archive-card {
+      padding: 20px;
+      min-height: 430px;
+    }
+
+    .project-card.clickable,
+    .archive-card.clickable {
+      cursor: pointer;
+    }
+
+    .project-card:hover,
+    .archive-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+    }
+
+    .archive-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+    }
+
+    .project-image.contain,
+    .archive-image.contain {
+      object-fit: contain;
+      background: #2f3742;
+    }
+
+    .project-image.light,
+    .archive-image.light {
+      background: #f7f7f4;
+    }
+
+    .project-card h3,
+    .archive-card h3 {
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    .project-card h3 {
+      font-size: 1.32rem;
+    }
+
+    .archive-card h3 {
+      font-size: 1.15rem;
+    }
+
+    .project-card p,
+    .archive-card p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+
+    .archive-card p {
+      font-size: 0.96rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #eef1ec;
+      color: var(--accent-dark);
+    }
+
+    .project-link {
+      margin-top: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .note {
+      margin-top: 26px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 40px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .featured-grid,
+      .archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .selected-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .featured-grid,
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="index.html">Fernando van der Vinne</a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#featured-projects">Featured</a>
+        <a href="#selected-projects">Selected</a>
+        <a href="#project-archive">Archive</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="eyebrow">Projects</div>
+
+        <h1>Engineering projects across robotics, mechanical design, prototyping, and CAD.</h1>
+
+        <p class="lead">
+          A structured overview of my project work. The main case studies show larger engineering projects
+          in more detail, while the selected projects and archive provide a broader view of additional
+          academic, professional, and personal work.
+        </p>
+
+        <div class="jump-links">
+          <a class="jump-link" href="#featured-projects">Featured case studies</a>
+          <a class="jump-link" href="#selected-projects">Selected projects</a>
+          <a class="jump-link" href="#project-archive">Project archive</a>
+        </div>
+      </section>
+
+      <section id="featured-projects">
+        <div class="section-title">
+          <div>
+            <span class="category-label">Main case studies</span>
+            <h2>Featured projects</h2>
+          </div>
+
+          <p>
+            Larger projects with full case studies. These are the strongest examples of my mechanical design,
+            prototyping, testing, mechatronic integration, and system-level development work.
+          </p>
+        </div>
+
+        <div class="featured-grid">
+          <a class="project-card clickable" href="projects/flat-surface-textile-gripper.html">
+            <div>
+              <img
+                class="project-image contain light"
+                src="assets/images/flat-surface-gripper/overview.jpg"
+                alt="Flat-surface textile gripper"
+              >
+
+              <h3>Flat-Surface Textile Gripper</h3>
+
+              <p>
+                Development of gripper concepts for reliably picking deformable textiles
+                from flat surfaces.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
+
+            <span class="project-link">View case study →</span>
+          </a>
+
+          <a class="project-card clickable" href="projects/industrial-laundry-sorting-prototype.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/industrial-laundry-sorting/hero-cad.png"
+                alt="CAD design of industrial laundry sorting prototype"
+              >
+
+              <h3>Industrial Laundry Sorting Prototype</h3>
+
+              <p>
+                Mechanical development for a robotic system intended to automate
+                textile sorting in an industrial environment.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Industrial Testing</span>
+              </div>
+            </div>
+
+            <span class="project-link">View case study →</span>
+          </a>
+
+          <a class="project-card clickable" href="projects/compact-parallel-gripper-end-effector.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/compact-parallel-gripper/final-cad.png"
+                alt="CAD design of compact parallel gripper end-effector"
+              >
+
+              <h3>Compact Parallel Gripper End-Effector</h3>
+
+              <p>
+                Compact mechatronic end-effector integrating mechanism design, electronics,
+                fittings, wiring, and robotic mounting into one small assembly.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechatronics</span>
+                <span class="tag">End-Effectors</span>
+                <span class="tag">Compact Design</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
+
+            <span class="project-link">View case study →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="selected-projects">
+        <div class="section-title">
+          <div>
+            <span class="category-label">Short case studies</span>
+            <h2>Selected projects</h2>
+          </div>
+
+          <p>
+            Additional projects with shorter case-study pages. These show broader experience in robotic
+            modules, academic development projects, mechanical interfaces, and robotic test setups.
+          </p>
+        </div>
+
+        <div class="selected-grid">
+          <a class="project-card clickable" href="projects/lcl-robot-joint-modules.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/selected-projects/lcl-robot-joints.jpg"
+                alt="Lightweight low-cost robot joint modules"
+              >
+
+              <h3>Lightweight Low-Cost Robot Joint Modules</h3>
+
+              <p>
+                Construction and mechanical support for lightweight robot joint modules developed in a research context.
+                The project focused on modular robot joints, lightweight design, and practical prototype construction.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">Prototype Construction</span>
+                <span class="tag">Lightweight Design</span>
+                <span class="tag">Research</span>
+              </div>
+            </div>
+
+            <span class="project-link">View short case study →</span>
+          </a>
+
+          <a class="project-card clickable" href="projects/robotic-leg-module.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/selected-projects/robotic-leg-module.jpg"
+                alt="Robotic leg module"
+              >
+
+              <h3>Robotic Leg Module</h3>
+
+              <p>
+                Mechanical design of a robotic leg module and test bench, including fast design changes,
+                carbon rod integration, actuator mounting, cabling considerations, and secure fixation.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Robotics</span>
+                <span class="tag">Test Bench</span>
+                <span class="tag">Carbon Rods</span>
+              </div>
+            </div>
+
+            <span class="project-link">View short case study →</span>
+          </a>
+
+          <a class="project-card clickable" href="projects/bachelor-thesis-low-cost-robot-arms.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/selected-projects/bachelor-thesis.jpg"
+                alt="Bachelor thesis end-effectors for low-cost robot arms"
+              >
+
+              <h3>Bachelor Thesis: End-Effectors for Low-Cost Robot Arms</h3>
+
+              <p>
+                Academic product-development project focused on designing, prototyping, and evaluating
+                end-effector concepts for low-cost robotic systems.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Bachelor Thesis</span>
+                <span class="tag">End-Effectors</span>
+                <span class="tag">Product Development</span>
+                <span class="tag">Prototyping</span>
+              </div>
+            </div>
+
+            <span class="project-link">View short case study →</span>
+          </a>
+
+          <a class="project-card clickable" href="projects/modular-robotic-test-platform.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/selected-projects/modular-robotic-test-platform.jpg"
+                alt="Modular robotic test platform"
+              >
+
+              <h3>Modular Robotic Test Platform</h3>
+
+              <p>
+                Design of an aluminum-profile robotic test platform and surrounding mechanical components,
+                focused on modularity, transport, reduced vibration, and easier integration.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Aluminum Profiles</span>
+                <span class="tag">CAD</span>
+                <span class="tag">System Design</span>
+                <span class="tag">Robotic Testing</span>
+              </div>
+            </div>
+
+            <span class="project-link">View short case study →</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="project-archive">
+        <div class="section-title">
+          <div>
+            <span class="category-label">Compact entries</span>
+            <h2>Project archive</h2>
+          </div>
+
+          <p>
+            Smaller academic, professional, and personal projects. These are intentionally kept short
+            to support the main case studies without making every project look equally large.
+          </p>
+        </div>
+
+        <div class="archive-grid">
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/machine-elements-cad.jpg"
+                alt="Machine elements CAD project"
+              >
+
+              <h3>Machine Elements CAD Projects</h3>
+
+              <p>
+                CAD assignments from mechanical engineering lectures, including larger assemblies such as
+                multi-stage gearboxes. I also created a MATLAB program to calculate bearing loads and
+                bearing lifespan.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Inventor</span>
+                <span class="tag">Machine Elements</span>
+                <span class="tag">MATLAB</span>
+                <span class="tag">Bearings</span>
+              </div>
+            </div>
+
+            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+              GitHub link coming soon →
+            </a>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/planetary-gearbox.jpg"
+                alt="Planetary gearbox CAD project"
+              >
+
+              <h3>Planetary Gearbox</h3>
+
+              <p>
+                Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing.
+                The focus was on gear assembly, printability, and learning how to structure mechanical
+                assemblies with gears.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Fusion 360</span>
+                <span class="tag">Gearbox</span>
+                <span class="tag">3D Printing</span>
+                <span class="tag">CAD</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/exo-tool.jpg"
+                alt="Wearable tool support prototype"
+              >
+
+              <h3>Wearable Tool Support Prototype</h3>
+
+              <p>
+                Prototype work for a body-mounted support system intended to reduce the ergonomic load of
+                using existing tools. My work focused on turning ideas into physical prototypes and designing
+                parts used in the tested prototype.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Wearable Robotics</span>
+                <span class="tag">Ergonomics</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Mechanical Design</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/catia-airplane.jpg"
+                alt="CATIA airplane surface design project"
+              >
+
+              <h3>CATIA Airplane Surface Design</h3>
+
+              <p>
+                University practical course assignment to model the body of a small airplane from scratch
+                using CATIA V5. The project introduced surface design and aircraft-style CAD workflows.
+              </p>
+
+              <div class="tags">
+                <span class="tag">CATIA V5</span>
+                <span class="tag">Surface Design</span>
+                <span class="tag">CAD</span>
+                <span class="tag">University Project</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/exoskeleton.jpg"
+                alt="Knee exoskeleton project"
+              >
+
+              <h3>Knee Exoskeleton Project</h3>
+
+              <p>
+                Project seminar focused on a knee joint for an exoskeleton using an elastic series actuator.
+                My work was mainly mechanical design and simulation, with attention to user safety and
+                accurate simulation.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Exoskeleton</span>
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Simulation</span>
+                <span class="tag">Project Seminar</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/laundry-cad.jpg"
+                alt="CAD reconstruction of laundry machinery"
+              >
+
+              <h3>Laundry Machinery CAD Reconstruction</h3>
+
+              <p>
+                CAD reconstruction of soiled-side sorting machinery to support the design of robotic
+                automation around an existing real-world environment. The project involved measuring,
+                interpreting, and rebuilding machinery context in CAD.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Reverse Engineering</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Industrial Context</span>
+                <span class="tag">Robotics</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/recycling-conveyors.jpg"
+                alt="Recycling conveyor design"
+              >
+
+              <h3>Recycling Conveyor Setup</h3>
+
+              <p>
+                Conveyor-related design work for an internal test setup, focused on using available parts
+                and building a practical material-handling structure for workshop and development use.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Conveyors</span>
+                <span class="tag">Workshop</span>
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Practical Build</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/mechatronic-device.jpg"
+                alt="Mechatronic device practical course"
+              >
+
+              <h3>Mechatronic Device Practical Course</h3>
+
+              <p>
+                University practical course project involving the design and construction of an Arduino-based
+                mechatronic device, including PCB design, soldering, assembly, and basic functional testing.
+              </p>
+
+              <div class="tags">
+                <span class="tag">PCB Design</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Soldering</span>
+                <span class="tag">Mechatronics</span>
+              </div>
+            </div>
+
+            <span class="project-link">Compact archive entry →</span>
+          </article>
+
+          <article class="archive-card">
+            <div>
+              <img
+                class="archive-image contain"
+                src="assets/images/project-archive/sudoku-solver.jpg"
+                alt="MATLAB Sudoku solver with user interface"
+              >
+
+              <h3>MATLAB Sudoku Solver</h3>
+
+              <p>
+                Personal programming mini-project: a Sudoku solver with a simple MATLAB user interface,
+                built before relying on AI tools. This project shows early experience with algorithms,
+                UI building, and MATLAB programming.
+              </p>
+
+              <div class="tags">
+                <span class="tag">MATLAB</span>
+                <span class="tag">UI</span>
+                <span class="tag">Algorithms</span>
+                <span class="tag">Personal Project</span>
+              </div>
+            </div>
+
+            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
+              GitHub link coming soon →
+            </a>
+          </article>
+        </div>
+
+        <div class="note">
+          Some archive entries are intentionally compact. They are included to show additional experience
+          without turning every small project into a full case study.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Fernando van der Vinne</strong>
+      <br />
+      Mechanical Engineering · Robotics · CAD · Prototyping
+    </div>
+  </footer>
+</body>
+</html>

@@ -21,6 +21,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -64,6 +68,7 @@
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       font-size: 0.95rem;
       color: var(--muted);
@@ -114,7 +119,7 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.07);
     }
 
-      .hero-image.hero-contain {
+    .hero-image.hero-contain {
       height: auto;
       max-height: 520px;
       object-fit: contain;
@@ -251,13 +256,13 @@
     }
 
     figure img {
-  width: 100%;
-  height: auto;
-  max-height: 560px;
-  object-fit: contain;
-  object-position: center;
-  background: #f0f0ec;
-}
+      width: 100%;
+      height: auto;
+      max-height: 560px;
+      object-fit: contain;
+      object-position: center;
+      background: #f0f0ec;
+    }
 
     figcaption {
       padding: 16px 18px;
@@ -287,6 +292,7 @@
       border: 1px solid var(--text);
       font-weight: 700;
       font-size: 0.95rem;
+      transition: 0.2s ease;
     }
 
     .button.primary {
@@ -294,11 +300,44 @@
       color: white;
     }
 
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page-actions .buttons {
+      margin-top: 0;
+    }
+
     footer {
-      padding: 40px 0;
+      padding: 44px 0;
       color: var(--muted);
       border-top: 1px solid var(--line);
       font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-dark);
     }
 
     @media (max-width: 850px) {
@@ -314,11 +353,17 @@
         height: 360px;
       }
 
-      figure img {
-        height: 260px;
+      .hero-image.hero-contain {
+        height: auto;
+        max-height: 420px;
       }
 
-      .nav {
+      figure img {
+        max-height: 360px;
+      }
+
+      .nav,
+      .footer-content {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -333,8 +378,22 @@
 
       <nav class="nav-links">
         <a href="../index.html">Home</a>
-        <a href="../index.html#featured">Projects</a>
-        <a href="../index.html#contact">Contact</a>
+        <a href="../projects.html">Projects</a>
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CV
+        </a>
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -356,8 +415,13 @@
 
           <div class="buttons">
             <a class="button primary" href="#process">View process</a>
-            <a class="button" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
-              Public Sewts post →
+            <a
+              class="button"
+              href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View public post →
             </a>
           </div>
 
@@ -380,7 +444,7 @@
         </div>
 
         <img
-          class="hero-image"
+          class="hero-image hero-contain"
           src="../assets/images/industrial-laundry-sorting/hero-cad.png"
           alt="CAD design of the aluminum-profile frame for the industrial laundry sorting prototype"
         >
@@ -438,6 +502,7 @@
           <div class="two-column">
             <div class="content-card">
               <h3>Building for deployment</h3>
+
               <ul class="bullet-list">
                 <li>The prototype needed to work outside the workshop in a real industrial laundry environment.</li>
                 <li>The mechanical structure had to be robust enough for transport, installation, and on-site testing.</li>
@@ -448,6 +513,7 @@
 
             <div class="content-card">
               <h3>Learning through real use</h3>
+
               <ul class="bullet-list">
                 <li>The first prototype was used to understand what changes when a concept leaves the workshop.</li>
                 <li>Real deployment introduced additional constraints that were not fully visible during early development.</li>
@@ -523,62 +589,62 @@
       </section>
 
       <section id="media">
-  <div class="section-title">
-    <h2>Prototype development</h2>
+        <div class="section-title">
+          <h2>Prototype development</h2>
 
-    <div class="gallery">
-      <figure>
-        <img
-          src="../assets/images/industrial-laundry-sorting/hero-cad.png"
-          alt="CAD design of aluminum-profile frame for industrial laundry sorting prototype"
-        >
-        <figcaption>
-          CAD design of the aluminum-profile frame, enclosure elements, and surrounding mechanical structure.
-        </figcaption>
-      </figure>
+          <div class="gallery">
+            <figure>
+              <img
+                src="../assets/images/industrial-laundry-sorting/hero-cad.png"
+                alt="CAD design of aluminum-profile frame for industrial laundry sorting prototype"
+              >
+              <figcaption>
+                CAD design of the aluminum-profile frame, enclosure elements, and surrounding mechanical structure.
+              </figcaption>
+            </figure>
 
-      <figure>
-        <img
-          src="../assets/images/industrial-laundry-sorting/transport-preparation.jpg"
-          alt="Prototype prepared for transport and installation"
-        >
-        <figcaption>
-          Prototype prepared for transport and installation, showing practical deployment constraints beyond the CAD design.
-        </figcaption>
-      </figure>
+            <figure>
+              <img
+                src="../assets/images/industrial-laundry-sorting/transport-preparation.jpg"
+                alt="Prototype prepared for transport and installation"
+              >
+              <figcaption>
+                Prototype prepared for transport and installation, showing practical deployment constraints beyond the CAD design.
+              </figcaption>
+            </figure>
 
-      <figure>
-        <img
-          src="../assets/images/industrial-laundry-sorting/deployed-installation.jpg"
-          alt="Installed industrial laundry sorting prototype during on-site validation"
-        >
-        <figcaption>
-          Installed prototype during on-site validation in an industrial laundry environment.
-        </figcaption>
-      </figure>
+            <figure>
+              <img
+                src="../assets/images/industrial-laundry-sorting/deployed-installation.jpg"
+                alt="Installed industrial laundry sorting prototype during on-site validation"
+              >
+              <figcaption>
+                Installed prototype during on-site validation in an industrial laundry environment.
+              </figcaption>
+            </figure>
 
-      <figure>
-        <img
-          src="../assets/images/industrial-laundry-sorting/end-effector-integration.jpg"
-          alt="End-effector integration on the robotic laundry sorting prototype"
-        >
-        <figcaption>
-          End-effector integration detail showing the gripper, spring-compliant mechanism, sensor, and pneumatic routing.
-        </figcaption>
-      </figure>
+            <figure>
+              <img
+                src="../assets/images/industrial-laundry-sorting/end-effector-integration.jpg"
+                alt="End-effector integration on the robotic laundry sorting prototype"
+              >
+              <figcaption>
+                End-effector integration detail showing the gripper, spring-compliant mechanism, sensor, and pneumatic routing.
+              </figcaption>
+            </figure>
 
-      <figure>
-        <img
-          src="../assets/images/industrial-laundry-sorting/installation-side-view.jpg"
-          alt="Side view of installed robotic laundry sorting prototype"
-        >
-        <figcaption>
-          Side view of the installed system, showing how the robot, frame, and surrounding structure fit into the existing industrial environment.
-        </figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
+            <figure>
+              <img
+                src="../assets/images/industrial-laundry-sorting/installation-side-view.jpg"
+                alt="Side view of installed robotic laundry sorting prototype"
+              >
+              <figcaption>
+                Side view of the installed system, showing how the robot, frame, and surrounding structure fit into the existing industrial environment.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
 
       <section id="result">
         <div class="section-title">
@@ -599,33 +665,50 @@
         </div>
       </section>
 
-      <section id="public-context">
-        <div class="section-title">
-          <h2>Public context</h2>
-
-          <div class="content-card">
-            <p>
-              Sewts has publicly shared context about its robotic soiled-side sorting work. The external post is
-              linked here as public reference material for the application area.
-            </p>
-
-            <div class="buttons">
-              <a class="button primary" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
-                View public Sewts post →
-              </a>
-              <a class="button" href="../index.html#featured">Back to featured projects</a>
-            </div>
-          </div>
+      <section class="page-actions">
+        <div class="buttons">
+          <a class="button primary" href="../projects.html#featured-projects">Back to projects</a>
+          <a class="button" href="../index.html">Back home</a>
+          <a
+            class="button"
+            href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View public post →
+          </a>
         </div>
       </section>
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <strong>Fernando van der Vinne</strong>
-      <br />
-      Mechanical Engineering · Robotics · CAD · Prototyping
+  <footer id="contact">
+    <div class="container footer-content">
+      <div>
+        <div class="footer-title">Fernando van der Vinne</div>
+        <div>Mechanical Engineering · Robotics · CAD · Prototyping</div>
+        <div>Munich, Germany</div>
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download CV
+        </a>
+
+        <a href="../projects.html">Projects</a>
+      </div>
     </div>
   </footer>
 </body>

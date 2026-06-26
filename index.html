@@ -21,6 +21,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -58,6 +62,7 @@
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       font-size: 0.95rem;
       color: var(--muted);
@@ -292,10 +297,35 @@
     }
 
     footer {
-      padding: 40px 0;
+      padding: 44px 0;
       color: var(--muted);
       border-top: 1px solid var(--line);
       font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-dark);
     }
 
     @media (max-width: 850px) {
@@ -309,7 +339,8 @@
         grid-template-columns: 1fr;
       }
 
-      .projects-cta {
+      .projects-cta,
+      .footer-content {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -331,6 +362,20 @@
         <a href="#featured">Featured</a>
         <a href="projects.html">Projects</a>
         <a href="#focus">Focus</a>
+        <a
+          href="assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CV
+        </a>
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -381,83 +426,83 @@
         </div>
 
         <div class="projects">
-  <a class="project-card" href="projects/flat-surface-textile-gripper.html">
-    <div>
-      <img
-        class="project-image contain light"
-        src="assets/images/flat-surface-gripper/overview.jpg"
-        alt="Flat-surface textile gripper"
-      >
+          <a class="project-card" href="projects/flat-surface-textile-gripper.html">
+            <div>
+              <img
+                class="project-image contain light"
+                src="assets/images/flat-surface-gripper/overview.jpg"
+                alt="Flat-surface textile gripper"
+              >
 
-      <h3>Flat-Surface Textile Gripper</h3>
+              <h3>Flat-Surface Textile Gripper</h3>
 
-      <p>
-        Development of gripper concepts for reliably picking deformable textiles
-        from flat surfaces.
-      </p>
+              <p>
+                Development of gripper concepts for reliably picking deformable textiles
+                from flat surfaces.
+              </p>
 
-      <div class="tags">
-        <span class="tag">Robotics</span>
-        <span class="tag">CAD</span>
-        <span class="tag">Prototyping</span>
-        <span class="tag">Testing</span>
-      </div>
-    </div>
+              <div class="tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
 
-    <span class="project-link">View case study →</span>
-  </a>
+            <span class="project-link">View case study →</span>
+          </a>
 
-  <a class="project-card" href="projects/industrial-laundry-sorting-prototype.html">
-    <div>
-      <img
-        class="project-image contain"
-        src="assets/images/industrial-laundry-sorting/hero-cad.png"
-        alt="CAD design of industrial laundry sorting prototype"
-      >
+          <a class="project-card" href="projects/industrial-laundry-sorting-prototype.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/industrial-laundry-sorting/hero-cad.png"
+                alt="CAD design of industrial laundry sorting prototype"
+              >
 
-      <h3>Industrial Laundry Sorting Prototype</h3>
+              <h3>Industrial Laundry Sorting Prototype</h3>
 
-      <p>
-        Mechanical development for a robotic system intended to automate
-        textile sorting in an industrial environment.
-      </p>
+              <p>
+                Mechanical development for a robotic system intended to automate
+                textile sorting in an industrial environment.
+              </p>
 
-      <div class="tags">
-        <span class="tag">Mechanical Design</span>
-        <span class="tag">Automation</span>
-        <span class="tag">Industrial Testing</span>
-      </div>
-    </div>
+              <div class="tags">
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Industrial Testing</span>
+              </div>
+            </div>
 
-    <span class="project-link">View case study →</span>
-  </a>
+            <span class="project-link">View case study →</span>
+          </a>
 
-  <a class="project-card" href="projects/compact-parallel-gripper-end-effector.html">
-    <div>
-      <img
-        class="project-image contain"
-        src="assets/images/compact-parallel-gripper/final-cad.png"
-        alt="CAD design of compact parallel gripper end-effector"
-      >
+          <a class="project-card" href="projects/compact-parallel-gripper-end-effector.html">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/compact-parallel-gripper/final-cad.png"
+                alt="CAD design of compact parallel gripper end-effector"
+              >
 
-      <h3>Compact Parallel Gripper End-Effector</h3>
+              <h3>Compact Parallel Gripper End-Effector</h3>
 
-      <p>
-        Compact mechatronic end-effector integrating mechanism design, electronics,
-        fittings, wiring, and robotic mounting into one small assembly.
-      </p>
+              <p>
+                Compact mechatronic end-effector integrating mechanism design, electronics,
+                fittings, wiring, and robotic mounting into one small assembly.
+              </p>
 
-      <div class="tags">
-        <span class="tag">Mechatronics</span>
-        <span class="tag">End-Effectors</span>
-        <span class="tag">Compact Design</span>
-        <span class="tag">Testing</span>
-      </div>
-    </div>
+              <div class="tags">
+                <span class="tag">Mechatronics</span>
+                <span class="tag">End-Effectors</span>
+                <span class="tag">Compact Design</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
 
-    <span class="project-link">View case study →</span>
-  </a>
-</div>
+            <span class="project-link">View case study →</span>
+          </a>
+        </div>
 
         <div class="projects-cta">
           <div>
@@ -495,12 +540,32 @@
   </main>
 
   <footer id="contact">
-    <div class="container">
-      <strong>Fernando van der Vinne</strong>
-      <br />
-      Mechanical Engineering · Robotics · CAD · Prototyping
-      <br />
-      Available for mechanical design, robotics, product development, and hardware prototyping opportunities.
+    <div class="container footer-content">
+      <div>
+        <div class="footer-title">Fernando van der Vinne</div>
+        <div>Mechanical Engineering · Robotics · CAD · Prototyping</div>
+        <div>Munich, Germany</div>
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download CV
+        </a>
+
+        <a href="projects.html">Projects</a>
+      </div>
     </div>
   </footer>
 </body>

@@ -21,6 +21,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -63,6 +67,7 @@
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       font-size: 0.95rem;
       color: var(--muted);
@@ -248,6 +253,7 @@
       border: 1px solid var(--text);
       font-weight: 700;
       font-size: 0.95rem;
+      transition: 0.2s ease;
     }
 
     .button.primary {
@@ -255,11 +261,44 @@
       color: white;
     }
 
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page-actions .buttons {
+      margin-top: 0;
+    }
+
     footer {
-      padding: 40px 0;
+      padding: 44px 0;
       color: var(--muted);
       border-top: 1px solid var(--line);
       font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-dark);
     }
 
     @media (max-width: 850px) {
@@ -271,7 +310,8 @@
         grid-template-columns: 1fr;
       }
 
-      .nav {
+      .nav,
+      .footer-content {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -286,9 +326,22 @@
 
       <nav class="nav-links">
         <a href="../index.html">Home</a>
-        <a href="../selected-projects.html">Selected Projects</a>
-        <a href="../project-archive.html">Archive</a>
-        <a href="../index.html#contact">Contact</a>
+        <a href="../projects.html">Projects</a>
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CV
+        </a>
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -388,6 +441,7 @@
           <div class="two-column">
             <div class="content-card">
               <h3>Secure carbon rod fixation</h3>
+
               <ul class="bullet-list">
                 <li>The carbon rod had to be fixed securely while avoiding damage from excessive clamping force.</li>
                 <li>The connection needed to transfer loads reliably during testing.</li>
@@ -397,6 +451,7 @@
 
             <div class="content-card">
               <h3>Actuator and test bench integration</h3>
+
               <ul class="bullet-list">
                 <li>Actuators needed to be mounted securely and remain accessible for changes.</li>
                 <li>The leg had to interface with a test bench for evaluation.</li>
@@ -463,20 +518,42 @@
         </div>
       </section>
 
-      <section id="navigation">
+      <section class="page-actions">
         <div class="buttons">
-          <a class="button primary" href="../selected-projects.html">Back to selected projects</a>
-          <a class="button" href="../index.html">Back to home</a>
+          <a class="button primary" href="../projects.html#selected-projects">Back to projects</a>
+          <a class="button" href="../index.html">Back home</a>
         </div>
       </section>
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <strong>Fernando van der Vinne</strong>
-      <br />
-      Mechanical Engineering · Robotics · CAD · Prototyping
+  <footer id="contact">
+    <div class="container footer-content">
+      <div>
+        <div class="footer-title">Fernando van der Vinne</div>
+        <div>Mechanical Engineering · Robotics · CAD · Prototyping</div>
+        <div>Munich, Germany</div>
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download CV
+        </a>
+
+        <a href="../projects.html">Projects</a>
+      </div>
     </div>
   </footer>
 </body>

@@ -201,6 +201,86 @@
       min-height: 455px;
     }
 
+    .archive-card.quick-card {
+  cursor: pointer;
+}
+
+.archive-card.quick-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.project-modal {
+  width: min(1000px, 92vw);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 24px;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.25);
+}
+
+.project-modal::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.modal-close {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 14px;
+}
+
+.modal-gallery {
+  clear: both;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.modal-gallery.has-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: #f0f0ec;
+}
+
+.modal-title {
+  margin: 20px 0 8px;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.modal-description {
+  color: var(--muted);
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .modal-gallery.has-two {
+    grid-template-columns: 1fr;
+  }
+}
+    
     .archive-card {
       padding: 20px;
       min-height: 430px;
@@ -607,250 +687,302 @@
         </div>
 
         <div class="archive-grid">
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/machine-elements-cad.jpg"
-                alt="Machine elements CAD project"
-              >
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Machine Elements CAD Projects"
+    data-description="CAD assignments from mechanical engineering lectures, including larger assemblies such as multi-stage gearboxes. I also created a MATLAB program to calculate bearing loads and bearing lifespan."
+    data-image1="assets/images/project-archive/machine-elements-cad.jpg"
+    data-image2="assets/images/project-archive/machine-elements-bearing-calculator.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/machine-elements-cad.jpg"
+        alt="Machine elements CAD project"
+      >
 
-              <h3>Machine Elements CAD Projects</h3>
+      <h3>Machine Elements CAD Projects</h3>
 
-              <p>
-                CAD assignments from mechanical engineering lectures, including larger assemblies such as
-                multi-stage gearboxes. I also created a MATLAB program to calculate bearing loads and
-                bearing lifespan.
-              </p>
+      <p>
+        CAD assignments from mechanical engineering lectures, including larger assemblies such as
+        multi-stage gearboxes. I also created a MATLAB program to calculate bearing loads and
+        bearing lifespan.
+      </p>
 
-              <div class="tags">
-                <span class="tag">Inventor</span>
-                <span class="tag">Machine Elements</span>
-                <span class="tag">MATLAB</span>
-                <span class="tag">Bearings</span>
-              </div>
-            </div>
+      <div class="tags">
+        <span class="tag">Inventor</span>
+        <span class="tag">Machine Elements</span>
+        <span class="tag">MATLAB</span>
+        <span class="tag">Bearings</span>
+      </div>
+    </div>
 
-            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
-              GitHub link coming soon →
-            </a>
-          </article>
+    <div class="card-actions">
+      <span class="project-link">GitHub repo planned →</span>
+    </div>
+  </article>
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/planetary-gearbox.jpg"
-                alt="Planetary gearbox CAD project"
-              >
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Planetary Gearbox"
+    data-description="Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing. The focus was on gear assembly, printability, and learning how to structure mechanical assemblies with gears."
+    data-image1="assets/images/project-archive/planetary-gearbox.jpg"
+    data-image2="assets/images/project-archive/planetary-gearbox-detail.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/planetary-gearbox.jpg"
+        alt="Planetary gearbox CAD project"
+      >
 
-              <h3>Planetary Gearbox</h3>
+      <h3>Planetary Gearbox</h3>
 
-              <p>
-                Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing.
-                The focus was on gear assembly, printability, and learning how to structure mechanical
-                assemblies with gears.
-              </p>
+      <p>
+        Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing.
+        The focus was on gear assembly, printability, and learning how to structure mechanical
+        assemblies with gears.
+      </p>
 
-              <div class="tags">
-                <span class="tag">Fusion 360</span>
-                <span class="tag">Gearbox</span>
-                <span class="tag">3D Printing</span>
-                <span class="tag">CAD</span>
-              </div>
-            </div>
+      <div class="tags">
+        <span class="tag">Fusion 360</span>
+        <span class="tag">Gearbox</span>
+        <span class="tag">3D Printing</span>
+        <span class="tag">CAD</span>
+      </div>
+    </div>
+  </article>
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Wearable Tool Support Prototype"
+    data-description="Prototype work for a body-mounted support system intended to reduce the ergonomic load of using existing tools. My work focused on turning ideas into physical prototypes and designing parts used in the tested prototype."
+    data-image1="assets/images/project-archive/exo-tool.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/exo-tool.jpg"
+        alt="Wearable tool support prototype"
+      >
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/exo-tool.jpg"
-                alt="Wearable tool support prototype"
-              >
+      <h3>Wearable Tool Support Prototype</h3>
 
-              <h3>Wearable Tool Support Prototype</h3>
+      <p>
+        Prototype work for a body-mounted support system intended to reduce the ergonomic load of
+        using existing tools. My work focused on turning ideas into physical prototypes and designing
+        parts used in the tested prototype.
+      </p>
 
-              <p>
-                Prototype work for a body-mounted support system intended to reduce the ergonomic load of
-                using existing tools. My work focused on turning ideas into physical prototypes and designing
-                parts used in the tested prototype.
-              </p>
+      <div class="tags">
+        <span class="tag">Wearable Robotics</span>
+        <span class="tag">Ergonomics</span>
+        <span class="tag">Prototyping</span>
+        <span class="tag">Mechanical Design</span>
+      </div>
+    </div>
+  </article>
 
-              <div class="tags">
-                <span class="tag">Wearable Robotics</span>
-                <span class="tag">Ergonomics</span>
-                <span class="tag">Prototyping</span>
-                <span class="tag">Mechanical Design</span>
-              </div>
-            </div>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="CATIA Airplane Surface Design"
+    data-description="University practical course assignment to model the body of a small airplane from scratch using CATIA V5. The project introduced surface design and aircraft-style CAD workflows."
+    data-image1="assets/images/project-archive/catia-airplane.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/catia-airplane.jpg"
+        alt="CATIA airplane surface design project"
+      >
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+      <h3>CATIA Airplane Surface Design</h3>
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/catia-airplane.jpg"
-                alt="CATIA airplane surface design project"
-              >
+      <p>
+        University practical course assignment to model the body of a small airplane from scratch
+        using CATIA V5. The project introduced surface design and aircraft-style CAD workflows.
+      </p>
 
-              <h3>CATIA Airplane Surface Design</h3>
+      <div class="tags">
+        <span class="tag">CATIA V5</span>
+        <span class="tag">Surface Design</span>
+        <span class="tag">CAD</span>
+        <span class="tag">University Project</span>
+      </div>
+    </div>
+  </article>
 
-              <p>
-                University practical course assignment to model the body of a small airplane from scratch
-                using CATIA V5. The project introduced surface design and aircraft-style CAD workflows.
-              </p>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Knee Exoskeleton Project"
+    data-description="Project seminar focused on a knee joint for an exoskeleton using an elastic series actuator. My work was mainly mechanical design and simulation, with attention to user safety and accurate simulation."
+    data-image1="assets/images/project-archive/exoskeleton.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/exoskeleton.jpg"
+        alt="Knee exoskeleton project"
+      >
 
-              <div class="tags">
-                <span class="tag">CATIA V5</span>
-                <span class="tag">Surface Design</span>
-                <span class="tag">CAD</span>
-                <span class="tag">University Project</span>
-              </div>
-            </div>
+      <h3>Knee Exoskeleton Project</h3>
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+      <p>
+        Project seminar focused on a knee joint for an exoskeleton using an elastic series actuator.
+        My work was mainly mechanical design and simulation, with attention to user safety and
+        accurate simulation.
+      </p>
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/exoskeleton.jpg"
-                alt="Knee exoskeleton project"
-              >
+      <div class="tags">
+        <span class="tag">Exoskeleton</span>
+        <span class="tag">Mechanical Design</span>
+        <span class="tag">Simulation</span>
+        <span class="tag">Project Seminar</span>
+      </div>
+    </div>
+  </article>
 
-              <h3>Knee Exoskeleton Project</h3>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Laundry Machinery CAD Reconstruction"
+    data-description="CAD reconstruction of soiled-side sorting machinery to support the design of robotic automation around an existing real-world environment. The project involved measuring, interpreting, and rebuilding machinery context in CAD."
+    data-image1="assets/images/project-archive/laundry-cad.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/laundry-cad.jpg"
+        alt="CAD reconstruction of laundry machinery"
+      >
 
-              <p>
-                Project seminar focused on a knee joint for an exoskeleton using an elastic series actuator.
-                My work was mainly mechanical design and simulation, with attention to user safety and
-                accurate simulation.
-              </p>
+      <h3>Laundry Machinery CAD Reconstruction</h3>
 
-              <div class="tags">
-                <span class="tag">Exoskeleton</span>
-                <span class="tag">Mechanical Design</span>
-                <span class="tag">Simulation</span>
-                <span class="tag">Project Seminar</span>
-              </div>
-            </div>
+      <p>
+        CAD reconstruction of soiled-side sorting machinery to support the design of robotic
+        automation around an existing real-world environment. The project involved measuring,
+        interpreting, and rebuilding machinery context in CAD.
+      </p>
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+      <div class="tags">
+        <span class="tag">Reverse Engineering</span>
+        <span class="tag">CAD</span>
+        <span class="tag">Industrial Context</span>
+        <span class="tag">Robotics</span>
+      </div>
+    </div>
+  </article>
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/laundry-cad.jpg"
-                alt="CAD reconstruction of laundry machinery"
-              >
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Recycling Conveyor Setup"
+    data-description="Conveyor-related design work for an internal test setup, focused on using available parts and building a practical material-handling structure for workshop and development use."
+    data-image1="assets/images/project-archive/recycling-conveyors.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/recycling-conveyors.jpg"
+        alt="Recycling conveyor design"
+      >
 
-              <h3>Laundry Machinery CAD Reconstruction</h3>
+      <h3>Recycling Conveyor Setup</h3>
 
-              <p>
-                CAD reconstruction of soiled-side sorting machinery to support the design of robotic
-                automation around an existing real-world environment. The project involved measuring,
-                interpreting, and rebuilding machinery context in CAD.
-              </p>
+      <p>
+        Conveyor-related design work for an internal test setup, focused on using available parts
+        and building a practical material-handling structure for workshop and development use.
+      </p>
 
-              <div class="tags">
-                <span class="tag">Reverse Engineering</span>
-                <span class="tag">CAD</span>
-                <span class="tag">Industrial Context</span>
-                <span class="tag">Robotics</span>
-              </div>
-            </div>
+      <div class="tags">
+        <span class="tag">Conveyors</span>
+        <span class="tag">Workshop</span>
+        <span class="tag">Mechanical Design</span>
+        <span class="tag">Practical Build</span>
+      </div>
+    </div>
+  </article>
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="Mechatronic Device Practical Course"
+    data-description="University practical course project involving the design and construction of an Arduino-based mechatronic device, including PCB design, soldering, assembly, and basic functional testing."
+    data-image1="assets/images/project-archive/mechatronic-device.jpg"
+    data-image2="assets/images/project-archive/mechatronic-device-pcb.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/mechatronic-device.jpg"
+        alt="Mechatronic device practical course"
+      >
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/recycling-conveyors.jpg"
-                alt="Recycling conveyor design"
-              >
+      <h3>Mechatronic Device Practical Course</h3>
 
-              <h3>Recycling Conveyor Setup</h3>
+      <p>
+        University practical course project involving the design and construction of an Arduino-based
+        mechatronic device, including PCB design, soldering, assembly, and basic functional testing.
+      </p>
 
-              <p>
-                Conveyor-related design work for an internal test setup, focused on using available parts
-                and building a practical material-handling structure for workshop and development use.
-              </p>
+      <div class="tags">
+        <span class="tag">PCB Design</span>
+        <span class="tag">Arduino</span>
+        <span class="tag">Soldering</span>
+        <span class="tag">Mechatronics</span>
+      </div>
+    </div>
+  </article>
 
-              <div class="tags">
-                <span class="tag">Conveyors</span>
-                <span class="tag">Workshop</span>
-                <span class="tag">Mechanical Design</span>
-                <span class="tag">Practical Build</span>
-              </div>
-            </div>
+  <article
+    class="archive-card quick-card"
+    tabindex="0"
+    role="button"
+    data-title="MATLAB Sudoku Solver"
+    data-description="Personal programming mini-project: a Sudoku solver with a simple MATLAB user interface, built before relying on AI tools. This project shows early experience with algorithms, UI building, and MATLAB programming."
+    data-image1="assets/images/project-archive/sudoku-solver.jpg"
+  >
+    <div>
+      <img
+        class="archive-image contain"
+        src="assets/images/project-archive/sudoku-solver.jpg"
+        alt="MATLAB Sudoku solver with user interface"
+      >
 
-            <span class="project-link">Compact archive entry →</span>
-          </article>
+      <h3>MATLAB Sudoku Solver</h3>
 
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/mechatronic-device.jpg"
-                alt="Mechatronic device practical course"
-              >
+      <p>
+        Personal programming mini-project: a Sudoku solver with a simple MATLAB user interface,
+        built before relying on AI tools. This project shows early experience with algorithms,
+        UI building, and MATLAB programming.
+      </p>
 
-              <h3>Mechatronic Device Practical Course</h3>
+      <div class="tags">
+        <span class="tag">MATLAB</span>
+        <span class="tag">UI</span>
+        <span class="tag">Algorithms</span>
+        <span class="tag">Personal Project</span>
+      </div>
+    </div>
 
-              <p>
-                University practical course project involving the design and construction of an Arduino-based
-                mechatronic device, including PCB design, soldering, assembly, and basic functional testing.
-              </p>
-
-              <div class="tags">
-                <span class="tag">PCB Design</span>
-                <span class="tag">Arduino</span>
-                <span class="tag">Soldering</span>
-                <span class="tag">Mechatronics</span>
-              </div>
-            </div>
-
-            <span class="project-link">Compact archive entry →</span>
-          </article>
-
-          <article class="archive-card">
-            <div>
-              <img
-                class="archive-image contain"
-                src="assets/images/project-archive/sudoku-solver.jpg"
-                alt="MATLAB Sudoku solver with user interface"
-              >
-
-              <h3>MATLAB Sudoku Solver</h3>
-
-              <p>
-                Personal programming mini-project: a Sudoku solver with a simple MATLAB user interface,
-                built before relying on AI tools. This project shows early experience with algorithms,
-                UI building, and MATLAB programming.
-              </p>
-
-              <div class="tags">
-                <span class="tag">MATLAB</span>
-                <span class="tag">UI</span>
-                <span class="tag">Algorithms</span>
-                <span class="tag">Personal Project</span>
-              </div>
-            </div>
-
-            <a class="project-link" href="#" target="_blank" rel="noopener noreferrer">
-              GitHub link coming soon →
-            </a>
-          </article>
-        </div>
+    <div class="card-actions">
+      <span class="project-link">GitHub repo planned →</span>
+    </div>
+  </article>
+</div>
 
         <div class="note">
           Some archive entries are intentionally compact. They are included to show additional experience
@@ -867,5 +999,80 @@
       Mechanical Engineering · Robotics · CAD · Prototyping
     </div>
   </footer>
+
+  <dialog class="project-modal" id="project-modal">
+  <button class="modal-close" type="button" id="modal-close">Close</button>
+
+  <div class="modal-gallery" id="modal-gallery">
+    <img class="modal-image" id="modal-image-1" src="" alt="">
+    <img class="modal-image" id="modal-image-2" src="" alt="">
+  </div>
+
+  <h3 class="modal-title" id="modal-title"></h3>
+  <p class="modal-description" id="modal-description"></p>
+</dialog>
+
+  <script>
+  const modal = document.getElementById("project-modal");
+  const modalGallery = document.getElementById("modal-gallery");
+  const modalImage1 = document.getElementById("modal-image-1");
+  const modalImage2 = document.getElementById("modal-image-2");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const modalClose = document.getElementById("modal-close");
+
+  function openProjectModal(card) {
+    const image1 = card.dataset.image1;
+    const image2 = card.dataset.image2;
+
+    modalImage1.src = image1;
+    modalImage1.alt = card.dataset.title;
+
+    if (image2) {
+      modalImage2.src = image2;
+      modalImage2.alt = card.dataset.title + " detail";
+      modalImage2.style.display = "block";
+      modalGallery.classList.add("has-two");
+    } else {
+      modalImage2.src = "";
+      modalImage2.alt = "";
+      modalImage2.style.display = "none";
+      modalGallery.classList.remove("has-two");
+    }
+
+    modalTitle.textContent = card.dataset.title;
+    modalDescription.textContent = card.dataset.description;
+
+    modal.showModal();
+  }
+
+  document.querySelectorAll(".quick-card").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        return;
+      }
+
+      openProjectModal(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openProjectModal(card);
+      }
+    });
+  });
+
+  modalClose.addEventListener("click", () => {
+    modal.close();
+  });
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.close();
+    }
+  });
+</script>
+  
 </body>
 </html>

@@ -366,6 +366,17 @@
       background: #f0f0ec;
     }
 
+    .modal-video {
+      width: 100%;
+      max-height: 68vh;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: #000;
+      display: none;
+    }
+
     .modal-title {
       margin: 20px 0 8px;
       font-size: 1.5rem;
@@ -760,7 +771,7 @@
             data-title="Planetary Gearbox"
             data-description="Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing. The focus was on gear assembly, printability, and learning how to structure mechanical assemblies with gears."
             data-image1="assets/images/project-archive/planetary-gearbox.jpg"
-            data-image2="assets/images/project-archive/planetary-gearbox-detail.jpg"
+            data-video="assets/videos/planetary-gearbox-animation.mp4"
           >
             <div>
               <img
@@ -1057,74 +1068,108 @@
     <button class="modal-close" type="button" id="modal-close">Close</button>
 
     <div class="modal-gallery" id="modal-gallery">
-      <img class="modal-image" id="modal-image-1" src="" alt="">
-      <img class="modal-image" id="modal-image-2" src="" alt="">
-    </div>
+  <img class="modal-image" id="modal-image-1" src="" alt="">
+  <img class="modal-image" id="modal-image-2" src="" alt="">
+
+  <video
+    class="modal-video"
+    id="modal-video"
+    muted
+    loop
+    playsinline
+    controls
+  ></video>
+</div>
 
     <h3 class="modal-title" id="modal-title"></h3>
     <p class="modal-description" id="modal-description"></p>
   </dialog>
 
   <script>
-    const modal = document.getElementById("project-modal");
-    const modalGallery = document.getElementById("modal-gallery");
-    const modalImage1 = document.getElementById("modal-image-1");
-    const modalImage2 = document.getElementById("modal-image-2");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDescription = document.getElementById("modal-description");
-    const modalClose = document.getElementById("modal-close");
+  const modal = document.getElementById("project-modal");
+  const modalGallery = document.getElementById("modal-gallery");
+  const modalImage1 = document.getElementById("modal-image-1");
+  const modalImage2 = document.getElementById("modal-image-2");
+  const modalVideo = document.getElementById("modal-video");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const modalClose = document.getElementById("modal-close");
 
-    function openProjectModal(card) {
-      const image1 = card.dataset.image1;
-      const image2 = card.dataset.image2;
+  function openProjectModal(card) {
+    const image1 = card.dataset.image1;
+    const image2 = card.dataset.image2;
+    const video = card.dataset.video;
 
-      modalImage1.src = image1;
-      modalImage1.alt = card.dataset.title;
+    modalImage1.src = image1;
+    modalImage1.alt = card.dataset.title;
 
-      if (image2) {
-        modalImage2.src = image2;
-        modalImage2.alt = card.dataset.title + " detail";
-        modalImage2.style.display = "block";
-        modalGallery.classList.add("has-two");
-      } else {
-        modalImage2.src = "";
-        modalImage2.alt = "";
-        modalImage2.style.display = "none";
-        modalGallery.classList.remove("has-two");
-      }
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.style.display = "none";
 
-      modalTitle.textContent = card.dataset.title;
-      modalDescription.textContent = card.dataset.description;
+    if (video) {
+      modalImage2.src = "";
+      modalImage2.alt = "";
+      modalImage2.style.display = "none";
 
-      modal.showModal();
+      modalVideo.src = video;
+      modalVideo.style.display = "block";
+      modalGallery.classList.add("has-two");
+    } else if (image2) {
+      modalImage2.src = image2;
+      modalImage2.alt = card.dataset.title + " detail";
+      modalImage2.style.display = "block";
+      modalGallery.classList.add("has-two");
+    } else {
+      modalImage2.src = "";
+      modalImage2.alt = "";
+      modalImage2.style.display = "none";
+      modalGallery.classList.remove("has-two");
     }
 
-    document.querySelectorAll(".quick-card").forEach((card) => {
-      card.addEventListener("click", (event) => {
-        if (event.target.closest("a")) {
-          return;
-        }
+    modalTitle.textContent = card.dataset.title;
+    modalDescription.textContent = card.dataset.description;
 
+    modal.showModal();
+
+    if (video) {
+      modalVideo.play().catch(() => {
+        // If autoplay is blocked, the user can still press play.
+      });
+    }
+  }
+
+  function closeProjectModal() {
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.style.display = "none";
+    modal.close();
+  }
+
+  document.querySelectorAll(".quick-card").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        return;
+      }
+
+      openProjectModal(card);
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
         openProjectModal(card);
-      });
-
-      card.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openProjectModal(card);
-        }
-      });
-    });
-
-    modalClose.addEventListener("click", () => {
-      modal.close();
-    });
-
-    modal.addEventListener("click", (event) => {
-      if (event.target === modal) {
-        modal.close();
       }
     });
-  </script>
+  });
+
+  modalClose.addEventListener("click", closeProjectModal);
+
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeProjectModal();
+    }
+  });
+</script>
 </body>
 </html>

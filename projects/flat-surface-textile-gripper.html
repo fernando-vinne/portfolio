@@ -21,6 +21,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -64,6 +68,7 @@
 
     .nav-links {
       display: flex;
+      flex-wrap: wrap;
       gap: 20px;
       font-size: 0.95rem;
       color: var(--muted);
@@ -286,6 +291,7 @@
       border: 1px solid var(--text);
       font-weight: 700;
       font-size: 0.95rem;
+      transition: 0.2s ease;
     }
 
     .button.primary {
@@ -293,11 +299,44 @@
       color: white;
     }
 
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .page-actions .buttons {
+      margin-top: 0;
+    }
+
     footer {
-      padding: 40px 0;
+      padding: 44px 0;
       color: var(--muted);
       border-top: 1px solid var(--line);
       font-size: 0.95rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    .footer-title {
+      color: var(--text);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-dark);
     }
 
     @media (max-width: 850px) {
@@ -317,7 +356,8 @@
         height: 260px;
       }
 
-      .nav {
+      .nav,
+      .footer-content {
         align-items: flex-start;
         flex-direction: column;
       }
@@ -332,8 +372,22 @@
 
       <nav class="nav-links">
         <a href="../index.html">Home</a>
-        <a href="../index.html#featured">Projects</a>
-        <a href="../index.html#contact">Contact</a>
+        <a href="../projects.html">Projects</a>
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          CV
+        </a>
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -347,16 +401,21 @@
           <h1>Flat-Surface Textile Gripper</h1>
 
           <p class="lead">
-  Development of a robotic gripper concept for picking deformable textiles from flat surfaces.
-  The project focused on turning a broad handling problem into a functional mechanical concept
-  through rapid prototyping, silicone casting, friction-based gripping, spring-compliant force
-  control, optimized finger contact surfaces, and iterative testing.
-</p>
+            Development of a robotic gripper concept for picking deformable textiles from flat surfaces.
+            The project focused on turning a broad handling problem into a functional mechanical concept
+            through rapid prototyping, silicone casting, friction-based gripping, spring-compliant force
+            control, optimized finger contact surfaces, and iterative testing.
+          </p>
 
           <div class="buttons">
             <a class="button primary" href="#process">View process</a>
-            <a class="button" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
-              Public Sewts post →
+            <a
+              class="button"
+              href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View public post →
             </a>
           </div>
 
@@ -399,11 +458,11 @@
 
             <p>
               The final concept combines a silicone-based flat-surface gripper with a spring-assisted
-  mechanism and optimized finger contact surfaces. The spring mechanism allows the robot
-  to apply sufficient downward force to the textile without triggering collision detection
-  issues. This helps create enough friction for the fingers to pull the textile between them
-  during closing. Additional surface features on the fingers help keep the textile securely
-  held after it has been gripped.
+              mechanism and optimized finger contact surfaces. The spring mechanism allows the robot
+              to apply sufficient downward force to the textile without triggering collision detection
+              issues. This helps create enough friction for the fingers to pull the textile between them
+              during closing. Additional surface features on the fingers help keep the textile securely
+              held after it has been gripped.
             </p>
           </div>
         </div>
@@ -415,9 +474,9 @@
 
           <div class="content-card">
             <p>
-              I was responsible for translating the concepts into physical
-              prototypes, testing them, understanding the failure modes, improving the design, and pushing
-              the concept toward a product-ready implementation.
+              I was responsible for translating the concepts into physical prototypes, testing them,
+              understanding the failure modes, improving the design, and pushing the concept toward
+              a product-ready implementation.
             </p>
 
             <ul class="bullet-list">
@@ -439,6 +498,7 @@
           <div class="two-column">
             <div class="content-card">
               <h3>Gripping reliability</h3>
+
               <ul class="bullet-list">
                 <li>The initial problem was very broad: reliably picking textiles from flat surfaces.</li>
                 <li>Textiles behave inconsistently due to folds, wrinkles, thickness differences, and edge conditions.</li>
@@ -451,6 +511,7 @@
 
             <div class="content-card">
               <h3>Product-oriented design</h3>
+
               <ul class="bullet-list">
                 <li>The mechanism had to become more than a working prototype: it needed to be robust and repeatable.</li>
                 <li>The silicone mold process had to be improved to avoid imperfections, bubbles, and inconsistent parts.</li>
@@ -506,8 +567,8 @@
                 <strong>Iterate the mechanism</strong>
                 <p>
                   Refined the silicone gripper geometry, spring-assisted mechanism, and finger contact surfaces
-  based on test results. The focus was to create enough friction during closing while keeping
-  the mechanism simple, reliable, and suitable for robotic integration.
+                  based on test results. The focus was to create enough friction during closing while keeping
+                  the mechanism simple, reliable, and suitable for robotic integration.
                 </p>
               </div>
             </div>
@@ -518,8 +579,8 @@
                 <strong>Adapt for manufacturing and final product use</strong>
                 <p>
                   Improved the mold design and silicone casting process to achieve more consistent prototype parts.
-Later design iterations focused on robustness, repeatability, and easier manufacturing using
-a silicone gripper supported by a rigid structure.
+                  Later design iterations focused on robustness, repeatability, and easier manufacturing using
+                  a silicone gripper supported by a rigid structure.
                 </p>
               </div>
             </div>
@@ -565,7 +626,7 @@ a silicone gripper supported by a rigid structure.
             <figure>
               <img
                 src="../assets/images/flat-surface-gripper/overmold-concept.jpg"
-                alt="Overmolded silicone concept for final textile gripper design"
+                alt="Silicone mold used during flat-surface gripper development"
               >
               <figcaption>
                 Silicone mold used during prototype development. A major part of the project was improving the casting process to reduce bubbles, surface imperfections, and inconsistencies between parts.
@@ -601,9 +662,9 @@ a silicone gripper supported by a rigid structure.
           <div class="highlight">
             <p>
               The resulting gripper concept was used in two deployed robotic prototype systems. A newer version
-  was later developed for the upcoming final product deployment, with the design evolving toward a
-  production-oriented silicone concept supported by a rigid structure to improve robustness,
-  repeatability, and manufacturability.
+              was later developed for the upcoming final product deployment, with the design evolving toward a
+              production-oriented silicone concept supported by a rigid structure to improve robustness,
+              repeatability, and manufacturability.
             </p>
 
             <p>
@@ -641,22 +702,52 @@ a silicone gripper supported by a rigid structure.
             </figure>
           </div>
         </div>
+      </section>
 
+      <section class="page-actions">
         <div class="buttons">
-          <a class="button primary" href="../index.html#featured">Back to featured projects</a>
-          <a class="button" href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q" target="_blank" rel="noopener noreferrer">
-            View public Sewts post →
+          <a class="button primary" href="../projects.html#featured-projects">Back to projects</a>
+          <a class="button" href="../index.html">Back home</a>
+          <a
+            class="button"
+            href="https://www.linkedin.com/posts/sewts_sewtssoiled-side-sorting-activity-7360962704682999809-sIQX?utm_source=share&utm_medium=member_desktop&rcm=ACoAACZ1AbMBNTBQUu6TV0ukeFs0s7fvQRdG08Q"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View public post →
           </a>
         </div>
       </section>
     </div>
   </main>
 
-  <footer>
-    <div class="container">
-      <strong>Fernando van der Vinne</strong>
-      <br />
-      Mechanical Engineering · Robotics · CAD · Prototyping
+  <footer id="contact">
+    <div class="container footer-content">
+      <div>
+        <div class="footer-title">Fernando van der Vinne</div>
+        <div>Mechanical Engineering · Robotics · CAD · Prototyping</div>
+        <div>Munich, Germany</div>
+      </div>
+
+      <div class="footer-links">
+        <a
+          href="https://www.linkedin.com/in/fernando-vinne/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="../assets/docs/Fernando_van_der_Vinne_CV-public.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download CV
+        </a>
+
+        <a href="../projects.html">Projects</a>
+      </div>
     </div>
   </footer>
 </body>

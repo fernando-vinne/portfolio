@@ -34,26 +34,6 @@
       text-decoration: none;
     }
 
-    .project-image {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 16px;
-  margin-bottom: 18px;
-  border: 1px solid var(--line);
-  background: #f0f0ec;
-}
-
-    .project-image.contain {
-  object-fit: contain;
-  background: #2f3742;
-}
-
-    .project-image.light {
-  background: #f7f7f4;
-}
-
     .container {
       width: min(1100px, 92%);
       margin: 0 auto;
@@ -131,6 +111,7 @@
       border: 1px solid var(--text);
       font-weight: 700;
       font-size: 0.95rem;
+      transition: 0.2s ease;
     }
 
     .button.primary {
@@ -143,36 +124,24 @@
     }
 
     .hero-card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: 12px;
-  min-height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
-}
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 12px;
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    }
 
     .hero-image {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 22px;
-  display: block;
-}
-
-    .hero-placeholder {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center;
       border-radius: 22px;
-      background: linear-gradient(135deg, #d8e5df, #f0eee8);
-      min-height: 250px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 24px;
-      color: var(--accent-dark);
-      font-weight: 700;
+      display: block;
     }
 
     .hero-note {
@@ -217,7 +186,7 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       padding: 22px;
-      min-height: 260px;
+      min-height: 500px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -229,10 +198,31 @@
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
     }
 
+    .project-image {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      border: 1px solid var(--line);
+      background: #f0f0ec;
+    }
+
+    .project-image.contain {
+      object-fit: contain;
+      background: #2f3742;
+    }
+
+    .project-image.light {
+      background: #f7f7f4;
+    }
+
     .project-card h3 {
       margin: 0 0 10px;
       font-size: 1.25rem;
       letter-spacing: -0.03em;
+      line-height: 1.25;
     }
 
     .project-card p {
@@ -261,6 +251,30 @@
       color: var(--accent);
     }
 
+    .projects-cta {
+      margin-top: 28px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .projects-cta h3 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+
+    .projects-cta p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
     .focus-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -273,37 +287,6 @@
       border-radius: 18px;
       padding: 18px;
       font-weight: 700;
-    }
-
-    .more-projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .wide-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 24px;
-    }
-
-    .wide-card {
-  display: block;
-  transition: 0.2s ease;
-}
-
-.wide-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
-}
-
-    .wide-card h3 {
-      margin-top: 0;
-    }
-
-    .wide-card p {
-      color: var(--muted);
     }
 
     footer {
@@ -320,9 +303,13 @@
       }
 
       .projects,
-      .focus-grid,
-      .more-projects {
+      .focus-grid {
         grid-template-columns: 1fr;
+      }
+
+      .projects-cta {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       .nav {
@@ -336,15 +323,14 @@
 <body>
   <header>
     <div class="container nav">
-      <a class="logo" href="#">Fernando van der Vinne</a>
+      <a class="logo" href="index.html">Fernando van der Vinne</a>
 
       <nav class="nav-links">
-  <a href="#featured">Featured</a>
-  <a href="selected-projects.html">Selected Projects</a>
-  <a href="project-archive.html">Archive</a>
-  <a href="#focus">Focus</a>
-  <a href="#contact">Contact</a>
-</nav>
+        <a href="#featured">Featured</a>
+        <a href="projects.html">Projects</a>
+        <a href="#focus">Focus</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -364,105 +350,125 @@
 
           <div class="buttons">
             <a class="button primary" href="#featured">View featured projects</a>
+            <a class="button" href="projects.html#selected-projects">See more projects</a>
             <a class="button" href="#contact">Contact</a>
           </div>
         </div>
 
         <aside class="hero-card">
-          <img class="hero-image" src="assets/images/robot selfie.png" alt="Fernando working with robotic hardware">
+          <img
+            class="hero-image"
+            src="assets/images/robot selfie.png"
+            alt="Fernando working with robotic hardware"
+          >
 
-         <p class="hero-note">
-  Selected engineering case studies focused on robotic hardware, mechanical design,
-  prototyping, and real-world automation.
-</p>
+          <p class="hero-note">
+            Selected engineering case studies focused on robotic hardware, mechanical design,
+            prototyping, and real-world automation.
+          </p>
         </aside>
       </section>
 
-    <section id="featured">
-  <div class="section-title">
-    <h2>Featured projects</h2>
-    <p>
-  Selected projects showing mechanical design, prototyping, testing,
-  mechatronic integration, and system-level development.
-</p>
-  </div>
-
-  <div class="projects">
-    <article class="project-card">
-      <div>
-        <img
-  class="project-image contain light"
-  src="assets/images/flat-surface-gripper/overview.jpg"
-  alt="Flat-surface textile gripper"
->
-
-        <h3>Flat-Surface Textile Gripper</h3>
-        <p>
-          Development of gripper concepts for reliably picking deformable textiles
-          from flat surfaces.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Robotics</span>
-          <span class="tag">CAD</span>
-          <span class="tag">Prototyping</span>
-          <span class="tag">Testing</span>
+      <section id="featured">
+        <div class="section-title">
+          <h2>Featured projects</h2>
+          <p>
+            Main case studies showing mechanical design, prototyping, testing,
+            mechatronic integration, and system-level development.
+          </p>
         </div>
-      </div>
 
-      <a class="project-link" href="projects/flat-surface-textile-gripper.html">View case study →</a>
-    </article>
+        <div class="projects">
+          <article class="project-card">
+            <div>
+              <img
+                class="project-image contain light"
+                src="assets/images/flat-surface-gripper/overview.jpg"
+                alt="Flat-surface textile gripper"
+              >
 
-    <article class="project-card">
-      <div>
-        <img
-          class="project-image contain"
-          src="assets/images/industrial-laundry-sorting/hero-cad.png"
-          alt="CAD design of industrial laundry sorting prototype"
-        >
+              <h3>Flat-Surface Textile Gripper</h3>
 
-        <h3>Industrial Laundry Sorting Prototype</h3>
-        <p>
-          Mechanical development for a robotic system intended to automate
-          textile sorting in an industrial environment.
-        </p>
+              <p>
+                Development of gripper concepts for reliably picking deformable textiles
+                from flat surfaces.
+              </p>
 
-        <div class="tags">
-          <span class="tag">Mechanical Design</span>
-          <span class="tag">Automation</span>
-          <span class="tag">Industrial Testing</span>
+              <div class="tags">
+                <span class="tag">Robotics</span>
+                <span class="tag">CAD</span>
+                <span class="tag">Prototyping</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
+
+            <a class="project-link" href="projects/flat-surface-textile-gripper.html">View case study →</a>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/industrial-laundry-sorting/hero-cad.png"
+                alt="CAD design of industrial laundry sorting prototype"
+              >
+
+              <h3>Industrial Laundry Sorting Prototype</h3>
+
+              <p>
+                Mechanical development for a robotic system intended to automate
+                textile sorting in an industrial environment.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechanical Design</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Industrial Testing</span>
+              </div>
+            </div>
+
+            <a class="project-link" href="projects/industrial-laundry-sorting-prototype.html">View case study →</a>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <img
+                class="project-image contain"
+                src="assets/images/compact-parallel-gripper/final-cad.png"
+                alt="CAD design of compact parallel gripper end-effector"
+              >
+
+              <h3>Compact Parallel Gripper End-Effector</h3>
+
+              <p>
+                Compact mechatronic end-effector integrating mechanism design, electronics,
+                fittings, wiring, and robotic mounting into one small assembly.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Mechatronics</span>
+                <span class="tag">End-Effectors</span>
+                <span class="tag">Compact Design</span>
+                <span class="tag">Testing</span>
+              </div>
+            </div>
+
+            <a class="project-link" href="projects/compact-parallel-gripper-end-effector.html">View case study →</a>
+          </article>
         </div>
-      </div>
 
-      <a class="project-link" href="projects/industrial-laundry-sorting-prototype.html">View case study →</a>
-    </article>
+        <div class="projects-cta">
+          <div>
+            <h3>Want the full project overview?</h3>
+            <p>
+              See additional robotics, CAD, academic, professional, and personal projects
+              grouped by depth and relevance.
+            </p>
+          </div>
 
-    <article class="project-card">
-      <div>
-        <img
-          class="project-image contain"
-          src="assets/images/compact-parallel-gripper/final-cad.png"
-          alt="CAD design of compact parallel gripper end-effector"
-        >
-
-        <h3>Compact Parallel Gripper End-Effector</h3>
-        <p>
-          Compact mechatronic end-effector integrating mechanism design, electronics,
-          fittings, wiring, and robotic mounting into one small assembly.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Mechatronics</span>
-          <span class="tag">End-Effectors</span>
-          <span class="tag">Compact Design</span>
-          <span class="tag">Testing</span>
+          <a class="button primary" href="projects.html#selected-projects">See more projects →</a>
         </div>
-      </div>
-
-      <a class="project-link" href="projects/compact-parallel-gripper-end-effector.html">View case study →</a>
-    </article>
-  </div>
-</section>
+      </section>
 
       <section id="focus">
         <div class="section-title">
@@ -483,37 +489,6 @@
           <div class="focus-item">Product Development</div>
         </div>
       </section>
-
-<section id="more">
-  <div class="section-title">
-    <h2>More projects</h2>
-    <p>
-      Additional academic, personal, and professional projects are organized by depth:
-      selected projects have short case studies, while smaller projects are collected in a compact archive.
-    </p>
-  </div>
-
-  <div class="more-projects">
-    <a class="wide-card" href="selected-projects.html">
-      <h3>Selected projects</h3>
-      <p>
-        Shorter case studies covering robotic modules, academic development projects,
-        mechatronics, PCB work, and additional mechanical design projects.
-      </p>
-      <div class="project-link">View selected projects →</div>
-    </a>
-
-    <a class="wide-card" href="project-archive.html">
-      <h3>Project archive</h3>
-      <p>
-        A compact overview of smaller CAD, gearbox, machine elements, university,
-        and personal design projects.
-      </p>
-      <div class="project-link">View project archive →</div>
-    </a>
-  </div>
-</section>
-      
     </div>
   </main>
 
@@ -523,7 +498,7 @@
       <br />
       Mechanical Engineering · Robotics · CAD · Prototyping
       <br />
-      Email / LinkedIn / CV links will be added here.
+      Available for mechanical design, robotics, product development, and hardware prototyping opportunities.
     </div>
   </footer>
 </body>

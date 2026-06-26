@@ -771,6 +771,7 @@
             data-title="Planetary Gearbox"
             data-description="Personal CAD project in which I designed a planetary gearbox from scratch for 3D printing. The focus was on gear assembly, printability, and learning how to structure mechanical assemblies with gears."
             data-image1="assets/images/project-archive/planetary-gearbox.jpg"
+            data-modal-image="assets/images/project-archive/planetary-gearbox-modal.jpg"
             data-video="assets/videos/planetary-gearbox-animation.mp4"
           >
             <div>
@@ -1096,7 +1097,7 @@
   const modalClose = document.getElementById("modal-close");
 
   function openProjectModal(card) {
-    const image1 = card.dataset.image1;
+    const image1 = card.dataset.modalImage || card.dataset.image1;
     const image2 = card.dataset.image2;
     const video = card.dataset.video;
 

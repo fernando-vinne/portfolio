@@ -225,6 +225,15 @@
       background: #2f3742;
     }
 
+    .physical-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      height: auto;
+      max-height: none;
+      object-fit: cover;
+      object-position: center;
+      background: #ffffff; }
+
     figcaption {
       padding: 16px 18px;
       color: var(--muted);
@@ -359,10 +368,11 @@
             improve portability, and create a more practical setup for development and integration work.
           </p>
 
-          <div class="buttons">
-            <a class="button primary" href="#contribution">View contribution</a>
-            <a class="button" href="#design">View CAD design</a>
-          </div>
+        <div class="buttons">
+          <a class="button primary" href="#contribution">View contribution</a>
+          <a class="button" href="#design">View CAD design</a>
+          <a class="button" href="#physical-setup">Physical setup</a>
+        </div>
 
           <div class="meta-grid">
             <div class="meta-card">
@@ -478,6 +488,23 @@
         </div>
       </section>
 
+    <section id="physical-setup">
+      <div class="section-title">
+        <h2>Physical setup</h2>
+        
+        <div class="gallery">
+          <figure class="physical-photo">
+            <img src="../assets/images/modular-robotic-test-platform/physical-test-platform.jpg"
+              alt="Physical modular robotic test platform during setup"
+              >
+            <figcaption>
+              Physical version of the modular test platform during setup and testing. The shown robot configuration was not the final configuration, but illustrates the realized aluminum-profile platform.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+      
       <section id="learning">
         <div class="section-title">
           <h2>What I learned</h2>

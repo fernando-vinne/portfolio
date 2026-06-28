@@ -226,6 +226,37 @@
       background: #f0f0ec;
     }
 
+    .connector-split {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      align-items: start;
+    }
+    
+    .connector-split figure img {
+      max-height: none;
+      background: #ffffff;
+    }
+    
+    .connector-photo img {
+      aspect-ratio: 5 / 6;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .connector-cad img {
+      aspect-ratio: 695 / 405;
+      object-fit: contain;
+      object-position: center;
+      background: #f7f7f4;
+    }
+    
+    @media (max-width: 850px) {
+      .connector-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
     figcaption {
       padding: 16px 18px;
       color: var(--muted);
@@ -463,42 +494,42 @@
         </div>
       </section>
 
-      <section id="connector">
-        <div class="section-title">
-          <h2>Carbon rod connector</h2>
+<section id="connector">
+  <div class="section-title">
+    <h2>Carbon rod connector</h2>
 
-          <div class="section-body">
-            <p>
-              One of the most interesting details was the carbon rod connection. The requirement was to
-              make actuator changes easy during testing while still fixing the carbon rod securely. The
-              connector used a special press-fit style design to hold the rod in place without breaking it,
-              while keeping the assembly practical to change and service.
-            </p>
-          </div>
-        </div>
+    <div class="section-body">
+      <p>
+        One of the most interesting details was the carbon rod connection. The requirement was to
+        make actuator changes easy during testing while still fixing the carbon rod securely. The
+        connector used a special press-fit style design to hold the rod in place without breaking it,
+        while keeping the assembly practical to change and service.
+      </p>
+    </div>
+  </div>
 
-        <div class="gallery">
-          <figure>
-            <img
-              src="../assets/images/robotic-leg-module/leg-standing.jpg"
-              alt="Robotic leg module mounted on test bench"
-            >
-            <figcaption>
-              Robotic leg module mounted on the test bench.
-            </figcaption>
-          </figure>
+  <div class="connector-split">
+    <figure class="connector-photo">
+      <img
+        src="../assets/images/robotic-leg-module/leg-standing.jpg"
+        alt="Robotic leg module mounted on test bench"
+      >
+      <figcaption>
+        Robotic leg module mounted on the test bench, showing the assembled actuator and carbon rod structure.
+      </figcaption>
+    </figure>
 
-          <figure>
-            <img
-              src="../assets/images/robotic-leg-module/carbon-rod-connector.png"
-              alt="CAD section view of carbon rod connector"
-            >
-            <figcaption>
-              CAD section of the carbon rod connection concept. The design supported secure fixation while allowing actuator-side components to be changed for testing.
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+    <figure class="connector-cad">
+      <img
+        src="../assets/images/robotic-leg-module/carbon-rod-connector.png"
+        alt="CAD section view of carbon rod connector"
+      >
+      <figcaption>
+        CAD section of the carbon rod connection concept. The design supported secure fixation while allowing actuator-side components to be changed for testing.
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
       <section id="learning">
         <div class="section-title">

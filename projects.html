@@ -225,7 +225,6 @@
 
     .project-image {
       width: 100%;
-      aspect-ratio: 16 / 10;
       height: auto;
       object-fit: cover;
       object-position: center;
@@ -234,6 +233,14 @@
       border: 1px solid var(--line);
       background: #ffffff;
       display: block;
+    }
+    
+    .featured-grid .project-image {
+      aspect-ratio: 16 / 10;
+    }
+    
+    .selected-grid .project-image {
+      aspect-ratio: 40 / 17;
     }
 
     .archive-image {
